@@ -4,7 +4,11 @@ const path = require("path");
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
+<<<<<<< HEAD
 module.exports = function(app) {
+=======
+module.exports = function (app) {
+>>>>>>> fa3b0a1... db working almost ready to start building
   app.get("/", (req, res) => {
     // If the user already has an account send them to the members page
     if (req.user) {
