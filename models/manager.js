@@ -7,13 +7,14 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Manager.associate = function(models) {
-    // An Employee should belong to a Manager
-    // An Employee cant be created without an Manager due to the foreign key constraint
-    Manager.belongsTo(models.Employee, {
+    // A Manager should belong to a User
+    Manager.belongsTo(models.User, {
       foreignKey: {
         allowNull: false
       }
     });
+    //A Manager can have many employees
+    Manager.hasMany(models.employee);
   };
   return Manager;
 };
