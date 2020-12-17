@@ -5,5 +5,9 @@ module.exports = function(sequelize, DataTypes) {
     designation: DataTypes.STRING,
     dailyGoal: DataTypes.INTEGER
   });
+
+  Employee.associate = function(models) {
+    Employee.belongsTo(models.User);
+  };
   return Employee;
 };
