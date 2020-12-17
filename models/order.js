@@ -44,7 +44,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isNumeric: true,
         len: [1]
       }
     },
