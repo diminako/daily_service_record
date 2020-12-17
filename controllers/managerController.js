@@ -3,7 +3,7 @@ const db = require("../models");
 // Create all our routes and set up logic within those routes where required.
 
 module.exports = function(app) {
-  app.get("/api/user", (req, res) => {
+  app.get("/api/manager", (req, res) => {
     db.User.findAll({})(data => {
       const hbsObject = {
         employee: data
@@ -13,27 +13,11 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/user", (req, res) => {
+  app.post("/api/manager", (req, res) => {
     db.User.create(
       // NEED TO FILL IN, result => {
       // Send back the ID of the new quote
       res.json({ id: result.insertId })
-    );
-  });
-
-  app.put("/api/user/:id", (req, res) => {
-    db.User.update(
-      {
-        //  Update the employee
-      },
-      condition,
-      result => {
-        if (result.changedRows === 0) {
-          // If no rows were changed, then the ID must not exist, so 404
-          return res.status(404).end();
-        }
-        res.status(200).end();
-      }
     );
   });
 };

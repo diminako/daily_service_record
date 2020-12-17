@@ -55,9 +55,9 @@ module.exports = function(app) {
   // CHANGE WHERE THEY RENDER
   app.get("/api/clearance", isAuthenticated, (req, res) => {
     if (req.user.clearance) {
-      res.render("index");
+      res.render("manager");
     } else {
-      res.render("index");
+      res.render("employee");
     }
   });
 };
