@@ -24,12 +24,12 @@ $(document).ready(() => {
 
   // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
   function loginUser(email, password) {
-    $.post("/api/login", {
+    $.get("/login", {
       email: email,
       password: password
     })
       .then(() => {
-        window.location.replace("/members");
+        console.log("V is the stuff");
         // If there's an error, log the error
       })
       .catch(err => {
