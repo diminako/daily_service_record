@@ -1,0 +1,61 @@
+{{!-- display either employee or manager --}}
+<h1></h1>
+
+<main class="section">
+    <div class="container">
+        <div class="column is-6 tasks">
+            <h3>Tasks</h3>
+            {{!-- employee tasks can go here and be hidden when not needed --}}
+            <div class="empTaskBlk">
+                <div class="form-group">
+                    <label for="category">Select Task:</label>
+                    <select class="custom-select" id="taskList">
+                        <option value="New Job">New Job</option>
+                        <option value="Search Previous">Search Previous</option>
+                        <option value="Edit Job">Edit Job</option>
+                    </select>
+                </div>
+                <br />
+                <button type="submit" class="button" value="Submit input">Submit</button>
+            </div>
+
+            <div class="empTasks">
+
+            </div>
+        </div>
+        <div class="column is-6 productivity">
+            <h3>Productivity</h3>
+            {{!-- employee productivity can go here and be hidden when not needed --}}
+            <div class="empTaskBlk">
+                <form action="prodDisplay">
+                    <p>How would you like to display your data:</p>
+                    <input type="radio" id="daily" name="display" value="daily">
+                    <label for="daily">Daily</label><br>
+                    <input type="radio" id="biWeek" name="display" value="biWeek">
+                    <label for="biWeek">Bi-Weekly</label><br>
+                    <input type="radio" id="monthly" name="display" value="monthly">
+                    <label for="monthly">Monthly</label>
+                    <br>
+                    <input type="submit" value="Submit">
+                </form>
+                <div class="prodGraph"></div>
+            </div>
+            <div class="empProd">
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="column is-12 today">
+            <h3>Job Data</h3>
+            {{!-- employee data can go here and be hidden when not needed --}}
+            <div>
+                <div class="empData"></div>
+            </div>
+            <div class="empToday">
+
+            </div>
+        </div>
+    </div>
+</main>
+<script src="../public/js/employeeAction.js" type="script/javascript"></script>
