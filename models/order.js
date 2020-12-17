@@ -59,7 +59,7 @@ module.exports = function(sequelize, DataTypes) {
   Order.associate = function(models) {
     // An Order should belong to an Employee
     // An Order cant be created without an Employee due to the foreign key constraint
-    Order.belongsTo(models.Employee, {
+    Order.belongsTo(models.User, {
       foreignKey: {
         allowNull: false
       }
