@@ -9,7 +9,7 @@ module.exports = function(app) {
         employee: data
       };
       console.log(hbsObject);
-      res.render("index", hbsObject);
+      res.render("user", hbsObject);
     });
   });
 
