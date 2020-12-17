@@ -1,6 +1,6 @@
 USE service_record_db;
 
-INSERT INTO Order(repairOrderNumber, vin, yearMakeModel, name, description, date, hours)
+INSERT INTO Order(repairOrderNumber, vin, yearMakeModel, name, description, [date], hours)
 VALUES 
 (0000000, "1HGEJ8145MN904564", "2012 Honda Civic", "Jeff Smith", "Oil Change, Tire Rotation", "12/16/2020", 1);
 (0000001, "WBSLZ9C5XEDZ78626", "2000 BMW i350", "Luther Johnson", "Replace Fan Belt", "12/16/2020", 2);
