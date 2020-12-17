@@ -30,7 +30,7 @@ router.put("/api/employee/:id", (req, res) => {
 
   employee.update(
     {
-      //  Update the employee 
+      //  Update the employee
     },
     condition,
     result => {
