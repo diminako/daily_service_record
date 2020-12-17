@@ -21,7 +21,8 @@ module.exports = function(app) {
   app.post("/api/signup", (req, res) => {
     db.User.create({
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      clearance: false
     })
       .then(() => {
         res.redirect(307, "/api/login");
@@ -53,11 +54,11 @@ module.exports = function(app) {
   });
 
   // CHANGE WHERE THEY RENDER
-  app.get("/api/clearance", isAuthenticated, (req, res) => {
+  app.get("/api/user_data", isAuthenticated, (req, res) => {
     if (req.user.clearance) {
-      res.render("index");
+      res.render("manager");
     } else {
-      res.render("index");
+      res.render("employee");
     }
   });
 };
