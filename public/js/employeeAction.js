@@ -3,3 +3,11 @@ $(document).ready(() => {
     $(".member-name").text(data.email);
   });
 });
+//blank click handler
+$("form-group").on("submit", () => {
+  console.log("select");
+});
+// blank click handler
+$("prodDisplay").on("submit", () => {
+  console.log("select");
+});
