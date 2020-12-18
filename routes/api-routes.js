@@ -8,11 +8,8 @@ module.exports = function(app) {
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
-    // Sending back a password, even a hashed password, isn't a good idea
-    res.json({
-      email: req.user.email,
-      id: req.user.id
-    });
+    console.log("here");
+    return res.sendStatus(200);
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -22,7 +19,7 @@ module.exports = function(app) {
     db.User.create({
       email: req.body.email,
       password: req.body.password,
-      clearance: false
+      clearance: true
     })
       .then(() => {
         res.redirect(307, "/api/login");

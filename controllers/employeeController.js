@@ -1,72 +1,54 @@
+// Requiring our models and passport as we've configured it
 const db = require("../models");
-
-// Create all our routes and set up logic within those routes where required.
+const passport = require("../config/passport");
+// const path = require("path");
 
 module.exports = function(app) {
-  app.get("/api/user", (req, res) => {
-    db.User.findAll({})(data => {
-      const hbsObject = {
-        employee: data
-      };
-      console.log(hbsObject);
-      res.render("user", hbsObject);
+  // Using the passport.authenticate middleware with our local strategy.
+  // If the user has valid login credentials, send them to the members page.
+  // Otherwise the user will be sent an error
+  app.post("/api/login", passport.authenticate("local"), (req, res) => {
+    // Sending back a password, even a hashed password, isn't a good idea
+    res.json({
+      email: req.user.email,
+      id: req.user.id
     });
   });
 
-  app.post("/api/user", (req, res) => {
-    db.User.create(
-      // NEED TO FILL IN, result => {
-      // Send back the ID of the new quote
-      res.json({ id: result.insertId })
-    );
+  // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
+  // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
+  // otherwise send back an error
+  app.post("/api/signup", (req, res) => {
+    db.User.create({
+      email: req.body.email,
+      password: req.body.password
+    })
+      .then(() => {
+        res.redirect(307, "/api/login");
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
   });
 
-  app.put("/api/user/:id", (req, res) => {
-    db.User.update(
-      {
-        //  Update the employee
-      },
-      condition,
-      result => {
-        if (result.changedRows === 0) {
-          // If no rows were changed, then the ID must not exist, so 404
-          return res.status(404).end();
-        }
-        res.status(200).end();
-      }
-    );
+  // Route for logging user out
+  app.get("/logout", (req, res) => {
+    req.logout();
+    res.redirect("/");
+  });
+
+  // Route for getting some data about our user to be used client side
+  app.get("/api/user_data", (req, res) => {
+    if (!req.user) {
+      // The user is not logged in, send back an empty object
+      res.json({});
+    } else {
+      // Otherwise send back the user's email and id
+      // Sending back a password, even a hashed password, isn't a good idea
+      res.json({
+        email: req.user.email,
+        id: req.user.id
+      });
+    }
   });
 };
-
-// const db = require("../models");
-
-// module.exports = function(app) {
-//   app.get("/api/employees", (req, res) => {
-//     //  find all objects
-//     db.Employees.findAll({}).then(result => {
-//       return res.json(result);
-//     });
-//   });
-
-//   app.get("/api/employees/:repairOrderNumber", (req, res) => {
-//     //   find Repair Order by repair order number
-//     db.Employees.findOne({
-//       where: {
-//         repairOrderNumber: req.body.repairOrderNumber
-//       }
-//     }).then(result => {
-//       return res.json(result);
-//     });
-//   });
-
-//   app.get("/api/employees/:createdAt", (req, res) => {
-//     //   find Repair Order by date it was created at
-//     db.Employees.findAll({
-//       where: {
-//         createdAt: req.body.createdAt
-//       }
-//     }).then(result => {
-//       return res.json(result);
-//     });
-//   });
-// };
