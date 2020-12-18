@@ -22,9 +22,9 @@ module.exports = function(app) {
 
   app.get("/member", isAuthenticated, (req, res) => {
     if (req.user.clearance) {
-      res.render("manager");
+      res.render("manager", { email: req.user.email });
     } else {
-      res.render("employee");
+      res.render("employee", { email: req.user.email });
     }
   });
 
