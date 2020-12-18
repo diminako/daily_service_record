@@ -28,11 +28,15 @@ app.set("view engine", "handlebars");
 // Requiring our routes
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
-require("./controllers/employeeController.js")(app);
-require("./controllers/managerController.js")(app);
+// require("./controllers/employeeController.js")(app);
+// require("./controllers/managerController.js")(app);
+
+app.get("/", (req, res) => {
+  res.render("employee");
+});
 
 // Syncing our database and logging a message to the user upon success
-db.sequelize.sync({ force: false }).then(() => {
+db.sequelize.sync({}).then(() => {
   app.listen(PORT, () => {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",

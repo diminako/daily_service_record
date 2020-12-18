@@ -39,14 +39,6 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    date: {
-      //Revisit as we could use DataTypes.DATEONLY
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
-    },
     hours: {
       type: DataTypes.INTEGER,
       allowNull: false,

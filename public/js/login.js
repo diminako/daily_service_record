@@ -27,13 +27,12 @@ $(document).ready(() => {
     $.post("/api/login", {
       email: email,
       password: password
-    })
-      .then(() => {
-        window.location.replace("/members");
-        // If there's an error, log the error
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    }).then(res => {
+      console.log(res);
+      if (res === "OK") {
+        window.location.replace("/member");
+      }
+      // If there's an error, log the error
+    });
   }
 });
