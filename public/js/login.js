@@ -26,12 +26,25 @@ function loginUser(email, password) {
   $.post("/api/login", {
     email: email,
     password: password
-  }).then(result => {
-    console.log(result);
-    $.get("/employee").then(() => {
-      console.log("were taking you to the employee page");
-    });
-    //window.location.replace("/members");
+  }).then(res => {
+    console.log(res);
+    if (res === "OK") {
+      window.location.replace("/member");
+    }
     // If there's an error, log the error
   });
 }
+
+// If we have an email and password we run the loginUser function and clear the form
+
+// loginUser does a post to our "api/login" route and if successful, redirects us the the members page
+// function loginUser(email, password) {
+//   $.post("/api/login", {
+//     email: email,
+//     password: password
+//   }).then(result => {
+//     console.log(result);
+//     window.location.replace("/member");
+//     // If there's an error, log the error
+//   });
+// }
