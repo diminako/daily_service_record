@@ -31,7 +31,7 @@ module.exports = function(app) {
           return order.dataValues;
         });
         console.log(orderList);
-        res.render("employee", {userInfo : req.user, orders:orderList});
+        res.render("employee", { userInfo: req.user, orders: orderList });
       }
     });
   });
