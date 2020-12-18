@@ -1,6 +1,6 @@
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
-
+const db = require("../models");
 module.exports = function(app) {
   app.get("/", (req, res) => {
     // If the user already has an account send them to the employee page
@@ -21,11 +21,19 @@ module.exports = function(app) {
   });
 
   app.get("/member", isAuthenticated, (req, res) => {
-    if (req.user.clearance) {
-      res.render("manager", { email: req.user.email });
-    } else {
-      res.render("employee", { email: req.user.email });
-    }
+    db.User.findByPk(req.user.id).then(async user => {
+      if (req.user.clearance) {
+        res.render("manager", { email: req.user.email });
+      } else {
+        const orders = await user.getOrders();
+        console.log(orders[0].dataValues);
+        const orderList = orders.map(order => {
+          return order.dataValues;
+        });
+        console.log(orderList);
+        res.render("employee", { userInfo: req.user, orders: orderList });
+      }
+    });
   });
 
   // app.get("/api/user_data", isAuthenticated, (req, res) => {

@@ -1,7 +1,7 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
-// const isAuthenticated = require("../config/middleware/isAuthenticated");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -30,16 +30,21 @@ module.exports = function(app) {
   });
 
   app.post("/api/order", (req, res) => {
-    db.Order.create({
-      repairOrderNumer: req.body.repairOrderNumber,
-      vin: req.body.vin,
-      yearMakeModel: req.body.yearMakeModel,
-      name: req.body.name,
-      description: req.body.description,
-      hours: req.body.hours
-    }).then(() => {
-      return res.sendStatus(200);
-    });
+    if (req.user) {
+      db.Order.create({
+        repairOrderNumber: req.body.repairOrderNumber,
+        vin: req.body.vin,
+        yearMakeModel: req.body.yearMakeModel,
+        name: req.body.name,
+        description: req.body.description,
+        hours: req.body.hours,
+        UserId: req.user.id
+      }).then(() => {
+        return res.sendStatus(200);
+      });
+    } else {
+      res.sendStatus(403);
+    }
   });
 
   app.post("/api/employee/create", (req, res) => {

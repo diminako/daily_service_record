@@ -1,30 +1,37 @@
-$(document).ready(() => {
+/* eslint-disable prefer-arrow-callback */
+$(document).ready(function() {
   console.log("working");
-  $.get("/api/user_data").then(data => {
+  $.get("/api/user_data").then(function(data) {
     $(".member-name").text(data.email);
   });
   //blank click handler
-  $("form-group").on("submit", () => {
+  $("form-group").on("submit", function() {
     console.log("select");
   });
   // blank click handler
-  $("prodDisplay").on("submit", () => {
+  $("prodDisplay").on("submit", function() {
     console.log("select");
   });
 
-  $("newEmployee").on("submit", event => {
+  $("newEmployee").on("submit", function(event) {
+    event.preventDefault();
+    if (tasklist === "newEmployee") {
+      $(".modal").addClass("is-active");
+    }
+  });
+
+  $(".newUser").on("submit", function(event) {
     event.preventDefault();
     const newEmployeeData = {
-      email: emailInput.val().trim(),
-      password: passwordInput.val().trim()
+      email: $(".emailInput").val(),
+      password: $(".passwordInput").val()
     };
     addEmployee(newEmployeeData);
   });
-
   function addEmployee(newEmployeeData) {
     $.post("/api/employee/create", newEmployeeData).then(res => {
       if (res === "OK") {
-        window.reload();
+        location.reload();
       }
     });
   }
