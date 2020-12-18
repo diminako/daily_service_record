@@ -35,6 +35,10 @@ app.get("/", (req, res) => {
   res.render("employee");
 });
 
+app.get("/", (req, res) => {
+  res.render("login");
+});
+
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync({}).then(() => {
   app.listen(PORT, () => {
