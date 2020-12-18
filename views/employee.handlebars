@@ -9,14 +9,14 @@
             <div class="empTaskBlk">
                 <div class="form-group">
                     <form id="employeeForm">
-                    <label for="category">Select Task:</label>
-                    <select class="custom-select" id="taskList">
-                        <option value="New Job">New Job</option>
-                        <option value="Search Previous">Search Previous</option>
-                        <option value="Edit Job">Edit Job</option>
-                        <option value="Logout">logout</option>
-                        <input type="submit" value="Submit">
-                    </select>
+                        <label for="category">Select Task:</label>
+                        <select class="custom-select" id="taskList">
+                            <option value="New">New Job</option>
+                            <option value="Search">Search Previous</option>
+                            <option value="Edit">Edit Job</option>
+                            <option value="Logout">logout</option>
+                            <input type="submit" value="Submit">
+                        </select>
                     </form>
                 </div>
             </div>
@@ -60,51 +60,52 @@
 <div class="modal">
     <div class="modal-background" id="modal-back"></div>
     <div class="modal-content has-background-white has-text-black py-5 px-5">
+        <button class="delete level-right" id="close" aria-label="close"></button>
         <form action="" class="newJob">
             <p>New Job</p>
             <div class="field">
                 <label class="label">Repair Order #</label>
                 <div class="control">
-                    <input class="input" name="repairOrderNumber" type="text" placeholder="Text input">
+                    <input class="input" id="repairOrderNumber" name="repairOrderNumber" type="text" placeholder="Text input">
                 </div>
             </div>
             <div class="field">
                 <label class="label">VIN</label>
                 <div class="control">
-                    <input class="input" name="vin" type="text" placeholder="Text input">
+                    <input class="input" id="vin" name="vin" type="text" placeholder="Text input">
                 </div>
             </div>
             <div class="field">
                 <label class="label">Year, Make and Model</label>
                 <div class="control">
-                    <input class="input" name="yearMakeModel" type="text" placeholder="Text input">
+                    <input class="input" id="yearMakeModel" name="yearMakeModel" type="text" placeholder="Text input">
                 </div>
             </div>
             <div class="field">
                 <label class="label">Name</label>
                 <div class="control">
-                    <input class="input" name="name" type="text" placeholder="Text input">
+                    <input class="input" id="name" name="name" type="text" placeholder="Text input">
                 </div>
             </div>
             <div class="field">
                 <label class="label">Description</label>
                 <div class="control">
-                    <input class="input" name="description" type="text" placeholder="Text input">
+                    <input class="input" id="description"name="description" type="text" placeholder="Text input">
                 </div>
             </div>
             <div class="field">
                 <label class="label">hours</label>
                 <div class="control">
-                    <input class="input" name="hours" type="text" placeholder="Text input">
+                    <input class="input" id="hours" name="hours" type="text" placeholder="Text input">
                 </div>
             </div>
             <div class="field is-grouped">
                 <div class="control">
-                    <button type="submit" id="repairOrder"class="button is-link">Submit</button>
+                    <button type="submit" id="repairOrder" class="button is-link">Submit</button>
                 </div>
             </div>
         </form>
     </div>
 </div>
 
-<script src="./js/employeeAction.js" type="script/javascript"></script>
+<script src="/js/employeeAction.js" ></script>
