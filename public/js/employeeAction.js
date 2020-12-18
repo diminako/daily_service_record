@@ -1,7 +1,6 @@
 const taskList = $("#taskList").val();
 console.log("test");
 $(document).ready(() => {
-  console.log("here is data");
   $.get("/api/user_data").then(data => {
     $(".member-name").text(data.email);
     $(".member-name").text(data.password);
