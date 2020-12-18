@@ -3,6 +3,8 @@ $(document).ready(() => {
     $(".member-name").text(data.email);
   });
 });
+// hide modal until ready for it...show will be the inverse
+$(".modal").hide();
 //blank click handler
 $("form-group").on("submit", () => {
   console.log("select");
