@@ -1,3 +1,5 @@
+// const taskList = $("#taskList").val();
+
 $(document).ready(() => {
   console.log("here is data");
   $.get("/api/user_data").then(data => {
@@ -5,9 +7,13 @@ $(document).ready(() => {
     $(".member-name").text(data.password);
   });
 });
+// hide modal until ready for it ... show will be the inverse
+$(".modal").hide();
 //blank click handler
-$("form-group").on("submit", () => {
+$(".empTaskBlk").on("submit", () => {
   console.log("select");
+
+  $(".modal").show();
 });
 // blank click handler
 $("prodDisplay").on("submit", () => {
