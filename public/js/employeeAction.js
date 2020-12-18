@@ -7,7 +7,7 @@ $(document).ready(() => {
     $(".member-name").text(data.password);
   });
   $("#employeeForm").on("submit", function(event) {
-    console.log("here")
+    console.log("here");
     event.preventDefault();
     if (taskList === "New") {
       $(".modal").addClass("is-active");
