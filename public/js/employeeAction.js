@@ -6,18 +6,14 @@ $(document).ready(() => {
     $(".member-name").text(data.email);
     $(".member-name").text(data.password);
   });
-});
-// hide modal until ready for it ... show will be the inverse
-$(".modal").hide();
-//blank click handler
-$(".empTaskBlk").on("submit", () => {
-  console.log("select");
-
-  $(".modal").show();
-});
-// blank click handler
-$("prodDisplay").on("submit", () => {
-  console.log("select");
+  $("#employeeForm").on("submit", event => {
+    event.preventDefault();
+    $(".modal").css({ display: "block" });
+  });
+  // blank click handler
+  $("prodDisplay").on("submit", () => {
+    console.log("select");
+  });
 });
 
 $("newRepairOrder").on("Submit", event => {

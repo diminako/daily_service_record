@@ -31,13 +31,13 @@ require("./routes/api-routes.js")(app);
 // require("./controllers/employeeController.js")(app);
 // require("./controllers/managerController.js")(app);
 
-app.get("/", (req, res) => {
-  res.render("employee");
-});
+// app.get("/", (req, res) => {
+//   res.render("employee");
+// });
 
-app.get("/", (req, res) => {
-  res.render("login");
-});
+// app.get("/", (req, res) => {
+//   res.render("login");
+// });
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync({}).then(() => {

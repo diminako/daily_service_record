@@ -8,21 +8,19 @@
             {{!-- employee tasks can go here and be hidden when not needed --}}
             <div class="empTaskBlk">
                 <div class="form-group">
+                    <form id="employeeForm">
                     <label for="category">Select Task:</label>
                     <select class="custom-select" id="taskList">
                         <option value="New Job">New Job</option>
                         <option value="Search Previous">Search Previous</option>
                         <option value="Edit Job">Edit Job</option>
                         <option value="Logout">logout</option>
-
+                        <input type="submit" value="Submit">
                     </select>
+                    </form>
                 </div>
-                <br />
-                <button type="submit" class="button" value="emp-submit">Submit</button>
             </div>
-
             <div class="empTasks">
-
             </div>
         </div>
         <div class="column is-6 productivity">
@@ -43,7 +41,6 @@
                 <div class="prodGraph"></div>
             </div>
             <div class="empProd">
-
             </div>
         </div>
     </div>
@@ -55,7 +52,6 @@
                 <div class="empData"></div>
             </div>
             <div class="empToday">
-
             </div>
         </div>
     </div>
@@ -64,7 +60,6 @@
 <div class="modal">
     <div class="modal-background" id="modal-back"></div>
     <div class="modal-content has-background-white has-text-black py-5 px-5">
-
         <form action="" class="newJob">
             <p>New Job</p>
             <div class="field">
