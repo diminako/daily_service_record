@@ -1,7 +1,7 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
-const isAuthenticated = require("../config/middleware/isAuthenticated");
+// const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -29,10 +29,44 @@ module.exports = function(app) {
       });
   });
 
+  app.post("/api/order", (req, res) => {
+    db.Order.create({
+      repairOrderNumer: req.body.repairOrderNumber,
+      vin: req.body.vin,
+      yearMakeModel: req.body.yearMakeModel,
+      name: req.body.name,
+      description: req.body.description,
+      hours: req.body.hours
+    }).then(() => {
+      return res.sendStatus(200);
+    });
+  });
+
+  app.post("/api/employee/create", (req, res) => {
+    res.sendStatus(200);
+  });
+
+  app.put("/api/employee/update", (req, res) => {
+    // DO NOT UPDATE THE PASSWORD OR ID
+    res.sendStatus(200);
+  });
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");
+  });
+  //Route for creating new employee
+  app.post("/api/employee/create", (req, res) => {
+    db.User.create({
+      email: req.body.email,
+      password: req.body.password,
+      clearance: false
+    }).then(() => res.sendStatus(200));
+  });
+
+  app.put("/api/employee/update", (req, res) => {
+    // DO NOT UPDATE THE PASSWORD OR ID
+    res.sendStatus(200);
   });
 
   // Route for getting some data about our user to be used client side
