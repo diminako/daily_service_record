@@ -13,6 +13,8 @@
                         <option value="New Job">New Job</option>
                         <option value="Search Previous">Search Previous</option>
                         <option value="Edit Job">Edit Job</option>
+                        <option value="Logout">logout</option>
+
                     </select>
                 </div>
                 <br />
@@ -58,4 +60,52 @@
         </div>
     </div>
 </main>
+{{!-- Modal area --}}
+    <div class="modal">
+        <div class="modal-background" id="modal-back"></div>
+        <div class="modal-content has-background-white has-text-black py-5 px-5">
+
+            <form action="" class="newJob">
+                <p>New Job</p>
+                <div class="field">
+                    <label class="label">Repair Order #</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Text input">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">VIN</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Text input">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Year, Make and Model</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Text input">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Name</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Text input">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Description</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Text input">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">hours</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Text input">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
 <script src="./js/employeeAction.js" type="script/javascript"></script>
