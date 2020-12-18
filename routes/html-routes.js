@@ -26,8 +26,12 @@ module.exports = function(app) {
         res.render("manager", { email: req.user.email });
       } else {
         const orders = await user.getOrders();
-        
-        res.render("employee", {userInfo : req.user,});
+        console.log(orders[0].dataValues);
+        const orderList = orders.map(order => {
+          return order.dataValues;
+        });
+        console.log(orderList);
+        res.render("employee", {userInfo : req.user, orders:orderList});
       }
     });
   });

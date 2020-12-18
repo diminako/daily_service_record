@@ -48,6 +48,12 @@
         <div class="column is-12 today">
             <h3>Job Data</h3>
             {{!-- employee data can go here and be hidden when not needed --}}
+            {{#each orders}}
+            {{id}}
+              <p> <h2>Order Number: {{repairOrderNumber}}</h2>
+                Year / Make / Model : {{yearMakeModel}}
+                </p> 
+            {{/each}}
             <div>
                 <div class="empData"></div>
             </div>
