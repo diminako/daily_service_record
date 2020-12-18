@@ -13,6 +13,7 @@ module.exports = function(app) {
   app.get("/signup", (req, res) => res.render("signup"));
 
   app.get("/login", (req, res) => {
+    console.log("here");
     if (req.user) {
       res.redirect("/member");
     }

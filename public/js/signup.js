@@ -27,14 +27,14 @@ $(document).ready(() => {
     $.post("/api/signup", {
       email: email,
       password: password
-    }).then(res => {
+    }).then(() => {
       window.location.replace("/member");
       // If there's an error, handle it by throwing up a bootstrap alert
     });
   }
 
-  function handleLoginErr(err) {
-    $("#alert .msg").text(err.responseJSON);
-    $("#alert").fadeIn(500);
-  }
+  // function handleLoginErr(err) {
+  //   $("#alert .msg").text(err.responseJSON);
+  //   $("#alert").fadeIn(500);
+  // }
 });
