@@ -13,6 +13,7 @@ module.exports = function(app) {
       email: req.user.email,
       id: req.user.id
     });
+    //res.render("employee");
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -25,7 +26,7 @@ module.exports = function(app) {
       clearance: false
     })
       .then(() => {
-        res.redirect(307, "/api/login");
+        res.redirect(307, "/login");
       })
       .catch(err => {
         res.status(401).json(err);
