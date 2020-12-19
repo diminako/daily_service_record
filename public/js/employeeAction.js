@@ -37,6 +37,31 @@ $(document).ready(() => {
       }
     });
   }
+  // Edit Order JavaScript
+  $(".editJob").on("submit", function(event) {
+    event.preventDefault();
+    const editRepairOrderData = {
+      id: $("#idEdit").val(),
+      repairOrderNumber: $("#repairOrderNumberEdit").val(),
+      vin: $("#vinEdit").val(),
+      yearMakeModel: $("#yearMakeModelEdit").val(),
+      name: $("#nameEdit").val(),
+      description: $("#descriptionEdit").val(),
+      hours: $("#hoursEdit").val()
+    };
+    updateOrder(editRepairOrderData);
+  });
+
+  function updateOrder(editRepairOrderData) {
+    $.ajax({
+      method: "PUT",
+      url: "/api/order",
+      data: editRepairOrderData
+    }).then(function() {
+      location.reload();
+    });
+  }
+
   $(".delete").click(function() {
     $(".modal").removeClass("is-active");
   });
@@ -94,6 +119,7 @@ $(document).ready(() => {
       const data = document.getElementById(rowId).querySelectorAll(".row-data");
       console.log(data);
       $("#editOrder").addClass("is-active");
+      $("#idEdit").val(data[0].innerHTML);
       $("#repairOrderNumberEdit").val(data[1].innerHTML);
       $("#vinEdit").val(data[2].innerHTML);
       $("#yearMakeModelEdit").val(data[3].innerHTML);
