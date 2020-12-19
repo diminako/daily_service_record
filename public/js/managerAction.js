@@ -14,6 +14,8 @@ $(document).ready(function() {
     event.preventDefault();
     if (taskList === "newEmployee") {
       $(".modal").addClass("is-active");
+    } else if (taskList === "Logout") {
+      window.location.replace("/logout");
     }
     console.log(taskList);
   });
