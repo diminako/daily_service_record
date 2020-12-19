@@ -48,6 +48,7 @@
     </div>
     <div class="container columns">
         <div class="column is-12 today">
+<<<<<<< HEAD
             <h3>Job Data</h3>
             <table id="orderTable">
                 <thead>
@@ -70,11 +71,59 @@
             </table>
             {{!-- employee data can go here and be hidden when not needed
             {{#each orders}}
+=======
+            {{!-- <h3>Job Data</h3> --}}
+            {{!-- employee data can go here and be hidden when not needed --}}
+            {{!-- {{#each orders}}
+>>>>>>> b1059ebb19b65faa8f721a7d05a718a4f90b7ef9
             {{id}}
-              <p> <h2>Order Number: {{repairOrderNumber}}</h2>
-                Year / Make / Model : {{yearMakeModel}}
-                </p> 
-            {{/each}}
+            <tr>
+                <td>
+                    <span> Order Number: {{repairOrderNumber}} </span>
+                </td>
+                <td>
+                    <span>Year / Make / Model : {{yearMakeModel}}</span>
+                </td>
+                <td>
+                    <span>Name : {{name}}</span>
+                </td>
+                <td>
+                    <span>Description : {{description}}</span>
+                </td>
+            </tr>
+            {{/each}} --}}
+
+            {{!-- TABLE FOR JOB DATA --}}
+            <table class="demo">
+                <caption>Job Data</caption>
+                <thead>
+                    <tr>
+                        <th>Idntification</th>
+                        <th>Customer Name</th>
+                        <th>Year / Model</th>
+                        <th>Description</th>
+                        <th>Hours Logged</th>
+                        <th>Edit Field</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each orders}}
+                    <tr>
+                        <td>{{id}}</td>
+                        <td>{{name}}</td>
+                        <td>{{yearMakeModel}}</td>
+                        <td>{{description}}</td>
+                        <td>{{hours}}</td>
+                        <td>
+                        	<button class="edit-order" data-id="{{id}}">Edit</button>
+                        </td>
+
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+
+
             <div>
                 <div class="empData"></div>
             </div>
@@ -87,13 +136,14 @@
 <div class="modal" id="newOrder">
     <div class="modal-background" id="modal-back"></div>
     <div class="modal-content has-background-white has-text-black py-5 px-5">
-        <button class="delete level-right" id="close" aria-label="close"></button>
+        <button class="delete is-right" id="close" aria-label="close"></button>
         <form action="" class="newJob">
             <p>New Job</p>
             <div class="field">
                 <label class="label">Repair Order #</label>
                 <div class="control">
-                    <input class="input" id="repairOrderNumber" name="repairOrderNumber" type="text" placeholder="Text input">
+                    <input class="input" id="repairOrderNumber" name="repairOrderNumber" type="text"
+                        placeholder="Text input">
                 </div>
             </div>
             <div class="field">
@@ -103,7 +153,7 @@
                 </div>
             </div>
             <div class="field">
-                <label class="label">Year, Make and Model</label>
+                <label class="label">Year, Make, and Model</label>
                 <div class="control">
                     <input class="input" id="yearMakeModel" name="yearMakeModel" type="text" placeholder="Text input">
                 </div>
@@ -117,11 +167,11 @@
             <div class="field">
                 <label class="label">Description</label>
                 <div class="control">
-                    <input class="input" id="description"name="description" type="text" placeholder="Text input">
+                    <input class="input" id="description" name="description" type="text" placeholder="Text input">
                 </div>
             </div>
             <div class="field">
-                <label class="label">hours</label>
+                <label class="label">Hours</label>
                 <div class="control">
                     <input class="input" id="hours" name="hours" type="text" placeholder="Text input">
                 </div>
@@ -134,6 +184,7 @@
         </form>
     </div>
 </div>
+<<<<<<< HEAD
 <div class="modal" id="editOrder">
     <div class="modal-background" id="modal-back"></div>
     <div class="modal-content has-background-white has-text-black py-5 px-5">
@@ -189,3 +240,7 @@
 </script>
 <script src="https://d3js.org/d3.v6.min.js"></script>
 <script src="/js/employeeAction.js" ></script>
+=======
+
+<script src="/js/employeeAction.js"></script>
+>>>>>>> b1059ebb19b65faa8f721a7d05a718a4f90b7ef9

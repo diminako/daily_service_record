@@ -26,8 +26,8 @@ module.exports = function(app) {
       if (req.user.clearance) {
         res.render("manager", { email: req.user.email });
       } else if (dataValues === void 0) {
+        console.log(dataValues + "<---------");
         const orders = await user.getOrders();
-        console.log(orders[0].dataValues);
         const orderList = orders.map(order => {
           return order.dataValues;
         });

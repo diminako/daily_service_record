@@ -10,6 +10,8 @@ $(document).ready(() => {
     event.preventDefault();
     if (taskList === "New") {
       $("#newOrder").addClass("is-active");
+    } else if (taskList === "Logout") {
+      window.location.replace("/logout");
     }
   });
   // blank click handler
@@ -83,7 +85,7 @@ $(document).ready(() => {
     .join("td")
     .attr("class", "button")
     .append("button")
-    .text(function(d) {
+    .text(function() {
       return "Edit";
     })
     .attr("class", "edit-order")
