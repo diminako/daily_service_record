@@ -9,8 +9,8 @@
             <div class="mgrTasks">
                 <div class="mgrTaskBlk">
                     <div class="form-group">
-                        <label for="category">Select Task:</label>
-                        <form id="mgrForm">
+                        <form id="managerForm">
+                            <label for="category">Select Task:</label>
                             <select class="custom-select" id="taskList">
                                 <option value="view employee stats">View Employee Stats</option>
                                 <option value="view overall hours">View Overall Hours</option>
@@ -23,7 +23,6 @@
                             </select>
                         </form>
                     </div>
-                    <br />
                 </div>
             </div>
         </div>
@@ -67,7 +66,7 @@
     <div class="modal-background" id="modal-back"></div>
     <div class="modal-content has-background-white has-text-black py-5 px-5">
 
-        <form action="" class="newUser">
+        <form action="" id="newUser">
             <p>New User</p>
             <div class="field">
                 <label class="label">Email</label>
@@ -78,7 +77,8 @@
             <div class="field">
                 <label class="label">Password</label>
                 <div class="control">
-                    <input id="passwordInput" class="passwordInput" name="password" type="text" placeholder="Text input">
+                    <input id="passwordInput" class="passwordInput" name="password" type="text"
+                        placeholder="Text input">
                 </div>
             </div>
             <div class="field is-grouped">
@@ -91,4 +91,4 @@
     </div>
 </div>
 
-<script src="/js/managerAction.js" type="script/javascript"></script>
+<script src="/js/managerAction.js" ></script>

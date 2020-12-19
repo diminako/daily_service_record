@@ -4,35 +4,47 @@ $(document).ready(function() {
   $.get("/api/user_data").then(function(data) {
     $(".member-name").text(data.email);
   });
-  //blank click handler
-  $("form-group").on("submit", function() {
-    console.log("select");
-  });
   // blank click handler
   $("prodDisplay").on("submit", function() {
     console.log("select");
   });
 
-  $("newEmployee").on("submit", function(event) {
+  $("#managerForm").on("submit", function(event) {
+    const taskList = $("#taskList").val();
     event.preventDefault();
-    if (tasklist === "newEmployee") {
+    if (taskList === "newEmployee") {
       $(".modal").addClass("is-active");
     }
+    console.log(taskList);
   });
 
-  $(".newUser").on("submit", function(event) {
+  $("#newUser").on("submit", function(event) {
     event.preventDefault();
+    console.log("click");
     const newEmployeeData = {
-      email: $(".emailInput").val(),
-      password: $(".passwordInput").val()
+      email: $(".emailInput")
+        .val()
+        .trim(),
+      password: $(".passwordInput")
+        .val()
+        .trim()
     };
-    addEmployee(newEmployeeData);
+    addEmployee(newEmployeeData.email, newEmployeeData.password);
+    console.log(newEmployeeData);
   });
-  function addEmployee(newEmployeeData) {
-    $.post("/api/employee/create", newEmployeeData).then(res => {
+  function addEmployee(email, password) {
+    $.post("/api/user_employee", {
+      email: email,
+      password: password
+    }).then(res => {
+      console.log(res);
       if (res === "OK") {
-        location.reload();
+        console.log("Okurr");
+        // location.reload();
       }
     });
   }
+  $("#close").click(function() {
+    $(".modal").removeClass("is-active");
+  });
 });

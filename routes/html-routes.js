@@ -22,9 +22,10 @@ module.exports = function(app) {
 
   app.get("/member", isAuthenticated, (req, res) => {
     db.User.findByPk(req.user.id).then(async user => {
+      let dataValues;
       if (req.user.clearance) {
         res.render("manager", { email: req.user.email });
-      } else {
+      } else if (dataValues !== undefined) {
         const orders = await user.getOrders();
         console.log(orders[0].dataValues);
         const orderList = orders.map(order => {
@@ -32,6 +33,8 @@ module.exports = function(app) {
         });
         console.log(orderList);
         res.render("employee", { userInfo: req.user, orders: orderList });
+      } else {
+        res.render("employee");
       }
     });
   });
