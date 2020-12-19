@@ -76,6 +76,7 @@
                         <th>Year / Model</th>
                         <th>Description</th>
                         <th>Hours Logged</th>
+                        <th>Edit Field</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -86,6 +87,10 @@
                         <td>{{yearMakeModel}}</td>
                         <td>{{description}}</td>
                         <td>{{hours}}</td>
+                        <td>
+                        	<button class="edit-order" data-id="{{id}}">Edit</button>
+                        </td>
+
                     </tr>
                     {{/each}}
                 </tbody>
