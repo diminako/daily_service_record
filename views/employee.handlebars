@@ -76,6 +76,7 @@
                         <th>Year / Model</th>
                         <th>Description</th>
                         <th>Hours Logged</th>
+                        <th>Edit Field</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -86,6 +87,10 @@
                         <td>{{yearMakeModel}}</td>
                         <td>{{description}}</td>
                         <td>{{hours}}</td>
+                        <td>
+                        	<button class="edit-order" data-id="{{id}}">Edit</button>
+                        </td>
+
                     </tr>
                     {{/each}}
                 </tbody>
@@ -104,7 +109,11 @@
 <div class="modal">
     <div class="modal-background" id="modal-back"></div>
     <div class="modal-content has-background-white has-text-black py-5 px-5">
+<<<<<<< HEAD
         <button class="delete is-pulled-right" id="close" aria-label="close"></button>
+=======
+        <button class="delete is-right" id="close" aria-label="close"></button>
+>>>>>>> b1059ebb19b65faa8f721a7d05a718a4f90b7ef9
         <form action="" class="newJob">
             <p>New Job</p>
             <div class="field">
@@ -121,7 +130,7 @@
                 </div>
             </div>
             <div class="field">
-                <label class="label">Year, Make and Model</label>
+                <label class="label">Year, Make, and Model</label>
                 <div class="control">
                     <input class="input" id="yearMakeModel" name="yearMakeModel" type="text" placeholder="Text input">
                 </div>
@@ -139,7 +148,7 @@
                 </div>
             </div>
             <div class="field">
-                <label class="label">hours</label>
+                <label class="label">Hours</label>
                 <div class="control">
                     <input class="input" id="hours" name="hours" type="text" placeholder="Text input">
                 </div>
@@ -152,6 +161,5 @@
         </form>
     </div>
 </div>
-
 
 <script src="/js/employeeAction.js"></script>

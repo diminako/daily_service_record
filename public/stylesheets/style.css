@@ -1,21 +1,36 @@
 form.signup,
 form.login {
   margin-top: 50px;
-  background-color: aqua;
-}
+  
+};
 
+body {
+  
+  min-height: 100vh;
+  
+};
+input {
+  outline: 1px solid rgb(120,205,209);
+};
+.welcome {
+  
+  color:rgb(204,194,192);
+};
+.displayBox {
+  background-color:rgb(120,205,209);
+};
 /* TABLE CSS */
 .demo {
   border:1px solid #C0C0C0;
   border-collapse:collapse;
   padding:5px;
-}
+};
 .demo th {
   border:1px solid #C0C0C0;
   padding:5px;
   background:#F0F0F0;
-}
+};
 .demo td {
   border:1px solid #C0C0C0;
   padding:5px;
-}
+};
