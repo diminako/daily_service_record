@@ -71,11 +71,12 @@
                 <caption>Job Data</caption>
                 <thead>
                     <tr>
-                        <th>Idntification</th>
-                        <th>Customer Name</th>
-                        <th>Year / Model</th>
-                        <th>Description</th>
-                        <th>Hours Logged</th>
+                        <th>Idntification        </th>
+                        <th>Repair Order         </th>
+                        <th>Customer Name        </th>
+                        <th>Year / Model         </th>
+                        <th>Description          </th>
+                        <th>Hours Logged         </th>
                         <th>Edit Field</th>
                     </tr>
                 </thead>
@@ -83,6 +84,7 @@
                     {{#each orders}}
                     <tr>
                         <td>{{id}}</td>
+                        <td>{{ repairOrderNumber }}</td>
                         <td>{{name}}</td>
                         <td>{{yearMakeModel}}</td>
                         <td>{{description}}</td>
