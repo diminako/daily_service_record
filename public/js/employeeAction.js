@@ -9,8 +9,9 @@ $(document).ready(() => {
     event.preventDefault();
     if (taskList === "New") {
       $(".modal").addClass("is-active");
+    } else if (taskList === "Logout") {
+      window.location.replace("/logout");
     }
-    console.log();
   });
   // blank click handler
   $("prodDisplay").on("submit", () => {

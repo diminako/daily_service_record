@@ -8,7 +8,6 @@ module.exports = function(app) {
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
-    console.log("here");
     return res.sendStatus(200);
   });
 
