@@ -1,16 +1,16 @@
-const taskList = $("#taskList").val();
-console.log("test");
 $(document).ready(() => {
   $.get("/api/user_data").then(data => {
     $(".member-name").text(data.email);
     $(".member-name").text(data.password);
   });
   $("#employeeForm").on("submit", function(event) {
-    console.log("here");
+    const taskList = $("#taskList").val();
+    console.log(taskList);
     event.preventDefault();
     if (taskList === "New") {
       $(".modal").addClass("is-active");
     }
+    console.log();
   });
   // blank click handler
   $("prodDisplay").on("submit", () => {
