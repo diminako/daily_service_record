@@ -9,20 +9,20 @@
             <div class="mgrTasks">
                 <div class="mgrTaskBlk">
                     <div class="form-group">
-                        <label for="category">Select Task:</label>
-                        <select class="custom-select" id="taskList">
-                            <option value="view employee stats">View Employee Stats</option>
-                            <option value="view overall hours">View Overall Hours</option>
-                            <option value="weekly recap">Weekly Recap</option>
-                            <option value="bi-weekly recap">Bi-Weekly Recap</option>
-                            <option value="range of dates">Range of Dates</option>
-                            <option value="newEmployee">Create Employee</option>
-                            <option value="Logout">logout</option>
-
-                        </select>
+                        <form id="managerForm">
+                            <label for="category">Select Task:</label>
+                            <select class="custom-select" id="taskList">
+                                <option value="view employee stats">View Employee Stats</option>
+                                <option value="view overall hours">View Overall Hours</option>
+                                <option value="weekly recap">Weekly Recap</option>
+                                <option value="bi-weekly recap">Bi-Weekly Recap</option>
+                                <option value="range of dates">Range of Dates</option>
+                                <option value="newEmployee">Create Employee</option>
+                                <option value="Logout">logout</option>
+                                <input type="submit" value="Submit">
+                            </select>
+                        </form>
                     </div>
-                    <br />
-                    <button type="submit" class="button" value="Submit input">Submit</button>
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
     <div class="modal-background" id="modal-back"></div>
     <div class="modal-content has-background-white has-text-black py-5 px-5">
 
-        <form action="" class="newUser">
+        <form action="" id="newUser">
             <p>New User</p>
             <div class="field">
                 <label class="label">Email</label>
@@ -77,7 +77,8 @@
             <div class="field">
                 <label class="label">Password</label>
                 <div class="control">
-                    <input id="passwordInput" class="passwordInput" name="password" type="text" placeholder="Text input">
+                    <input id="passwordInput" class="passwordInput" name="password" type="text"
+                        placeholder="Text input">
                 </div>
             </div>
             <div class="field is-grouped">
@@ -90,4 +91,4 @@
     </div>
 </div>
 
-<script src="/js/managerAction.js" type="script/javascript"></script>
+<script src="/js/managerAction.js" ></script>

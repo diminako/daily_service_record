@@ -25,7 +25,7 @@ module.exports = function(app) {
       let dataValues;
       if (req.user.clearance) {
         res.render("manager", { email: req.user.email });
-      } else if (!dataValues) {
+      } else if (dataValues !== undefined) {
         const orders = await user.getOrders();
         console.log(orders[0].dataValues);
         const orderList = orders.map(order => {

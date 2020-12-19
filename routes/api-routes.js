@@ -61,17 +61,12 @@ module.exports = function(app) {
     res.redirect("/");
   });
   //Route for creating new employee
-  app.post("/api/employee/create", (req, res) => {
+  app.post("/api/user_employee", (req, res) => {
     db.User.create({
       email: req.body.email,
       password: req.body.password,
       clearance: false
     }).then(() => res.sendStatus(200));
-  });
-
-  app.put("/api/employee/update", (req, res) => {
-    // DO NOT UPDATE THE PASSWORD OR ID
-    res.sendStatus(200);
   });
 
   // Route for getting some data about our user to be used client side
