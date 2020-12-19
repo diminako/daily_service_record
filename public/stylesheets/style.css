@@ -5,7 +5,8 @@ form.login {
 };
 
 body {
-  background-color: rgb(204,194,192);
+  
+  height: 100vh;
   
 };
 input {

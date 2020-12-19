@@ -50,9 +50,11 @@
             {{!-- employee data can go here and be hidden when not needed --}}
             {{#each orders}}
             {{id}}
-              <p> <h2>Order Number: {{repairOrderNumber}}</h2>
-                Year / Make / Model : {{yearMakeModel}}
-                </p> 
+            <p>
+            <h2>Order Number: {{repairOrderNumber}}</h2>
+            Year / Make / Model : {{yearMakeModel}}
+            </p>
+
             {{/each}}
             <div>
                 <div class="empData"></div>
@@ -66,13 +68,14 @@
 <div class="modal">
     <div class="modal-background" id="modal-back"></div>
     <div class="modal-content has-background-white has-text-black py-5 px-5">
-        <button class="delete level-right" id="close" aria-label="close"></button>
+        <button class="delete is-right" id="close" aria-label="close"></button>
         <form action="" class="newJob">
             <p>New Job</p>
             <div class="field">
                 <label class="label">Repair Order #</label>
                 <div class="control">
-                    <input class="input" id="repairOrderNumber" name="repairOrderNumber" type="text" placeholder="Text input">
+                    <input class="input" id="repairOrderNumber" name="repairOrderNumber" type="text"
+                        placeholder="Text input">
                 </div>
             </div>
             <div class="field">
@@ -96,7 +99,7 @@
             <div class="field">
                 <label class="label">Description</label>
                 <div class="control">
-                    <input class="input" id="description"name="description" type="text" placeholder="Text input">
+                    <input class="input" id="description" name="description" type="text" placeholder="Text input">
                 </div>
             </div>
             <div class="field">
@@ -114,4 +117,4 @@
     </div>
 </div>
 
-<script src="/js/employeeAction.js" ></script>
+<script src="/js/employeeAction.js"></script>
