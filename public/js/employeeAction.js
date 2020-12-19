@@ -39,4 +39,7 @@ $(document).ready(() => {
   $("#close").click(function() {
     $(".modal").removeClass("is-active");
   });
+  $(".edit-order").on("click", function() {
+    $(".modal").addClass("is-active");
+  });
 });
