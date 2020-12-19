@@ -1,0 +1,42 @@
+{{!-- display either employee or manager --}}
+<h1></h1>
+
+<main class="section">
+    <div class="container">
+        <div class="column is-6 tasks">
+            <h3>Tasks</h3>
+            {{!-- manager tasks can go here and be hidden when not needed --}}
+            <div class="mgrTasks">
+                {{> manager/mgrTask-block}}
+            </div>
+            {{!-- employee tasks can go here and be hidden when not needed --}}
+            <div class="empTasks">
+                {{> employee/empTask-block}}
+            </div>
+        </div>
+        <div class="column is-6 productivity">
+            <h3>Productivity</h3>
+            {{!-- manager productivity can go here and be hidden when not needed --}}
+            <div class="mgrProd">
+                {{> manager/mgrProd-block}}
+            </div>
+            {{!-- employee productivity can go here and be hidden when not needed --}}
+            <div class="empProd">
+                {{> employee/empProd-block}}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="column is-12 today">
+            <h3>Job Data</h3>
+            {{!-- manager data can go here and be hidden when not needed --}}
+            <div class="mgrToday">
+                {{> manager/mgrData-block}}
+            </div>
+            {{!-- employee data can go here and be hidden when not needed --}}
+            <div class="empToday">
+                {{> employee/empData-block}}
+            </div>
+        </div>
+    </div>
+</main>
