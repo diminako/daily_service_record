@@ -46,14 +46,52 @@
     </div>
     <div class="container columns">
         <div class="column is-12 today">
-            <h3>Job Data</h3>
+            {{!-- <h3>Job Data</h3> --}}
             {{!-- employee data can go here and be hidden when not needed --}}
-            {{#each orders}}
+            {{!-- {{#each orders}}
             {{id}}
-              <p> <h2>Order Number: {{repairOrderNumber}}</h2>
-                Year / Make / Model : {{yearMakeModel}}
-                </p> 
-            {{/each}}
+            <tr>
+                <td>
+                    <span> Order Number: {{repairOrderNumber}} </span>
+                </td>
+                <td>
+                    <span>Year / Make / Model : {{yearMakeModel}}</span>
+                </td>
+                <td>
+                    <span>Name : {{name}}</span>
+                </td>
+                <td>
+                    <span>Description : {{description}}</span>
+                </td>
+            </tr>
+            {{/each}} --}}
+
+            {{!-- TABLE FOR JOB DATA --}}
+            <table class="demo">
+                <caption>Job Data</caption>
+                <thead>
+                    <tr>
+                        <th>Idntification</th>
+                        <th>Customer Name</th>
+                        <th>Year / Model</th>
+                        <th>Description</th>
+                        <th>Hours Logged</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each orders}}
+                    <tr>
+                        <td>{{id}}</td>
+                        <td>{{name}}</td>
+                        <td>{{yearMakeModel}}</td>
+                        <td>{{description}}</td>
+                        <td>{{hours}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+
+
             <div>
                 <div class="empData"></div>
             </div>
@@ -72,7 +110,8 @@
             <div class="field">
                 <label class="label">Repair Order #</label>
                 <div class="control">
-                    <input class="input" id="repairOrderNumber" name="repairOrderNumber" type="text" placeholder="Text input">
+                    <input class="input" id="repairOrderNumber" name="repairOrderNumber" type="text"
+                        placeholder="Text input">
                 </div>
             </div>
             <div class="field">
@@ -96,7 +135,7 @@
             <div class="field">
                 <label class="label">Description</label>
                 <div class="control">
-                    <input class="input" id="description"name="description" type="text" placeholder="Text input">
+                    <input class="input" id="description" name="description" type="text" placeholder="Text input">
                 </div>
             </div>
             <div class="field">
@@ -114,4 +153,5 @@
     </div>
 </div>
 
-<script src="/js/employeeAction.js" ></script>
+
+<script src="/js/employeeAction.js"></script>
