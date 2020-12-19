@@ -48,7 +48,6 @@
     </div>
     <div class="container columns">
         <div class="column is-12 today">
-<<<<<<< HEAD
             <h3>Job Data</h3>
             <table id="orderTable">
                 <thead>
@@ -69,78 +68,19 @@
 
                 </tbody>
             </table>
-            {{!-- employee data can go here and be hidden when not needed
-            {{#each orders}}
-=======
-            {{!-- <h3>Job Data</h3> --}}
-            {{!-- employee data can go here and be hidden when not needed --}}
-            {{!-- {{#each orders}}
->>>>>>> b1059ebb19b65faa8f721a7d05a718a4f90b7ef9
-            {{id}}
-            <tr>
-                <td>
-                    <span> Order Number: {{repairOrderNumber}} </span>
-                </td>
-                <td>
-                    <span>Year / Make / Model : {{yearMakeModel}}</span>
-                </td>
-                <td>
-                    <span>Name : {{name}}</span>
-                </td>
-                <td>
-                    <span>Description : {{description}}</span>
-                </td>
-            </tr>
-            {{/each}} --}}
-
-            {{!-- TABLE FOR JOB DATA --}}
-            <table class="demo">
-                <caption>Job Data</caption>
-                <thead>
-                    <tr>
-                        <th>Idntification</th>
-                        <th>Customer Name</th>
-                        <th>Year / Model</th>
-                        <th>Description</th>
-                        <th>Hours Logged</th>
-                        <th>Edit Field</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each orders}}
-                    <tr>
-                        <td>{{id}}</td>
-                        <td>{{name}}</td>
-                        <td>{{yearMakeModel}}</td>
-                        <td>{{description}}</td>
-                        <td>{{hours}}</td>
-                        <td>
-                        	<button class="edit-order" data-id="{{id}}">Edit</button>
-                        </td>
-
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-
-
             <div>
                 <div class="empData"></div>
             </div>
             <div class="empToday">
-            </div> --}}
+            </div>
         </div>
     </div>
 </main>
-{{!-- Modal area --}}
+{{!-- NewOrder Modal area --}}
 <div class="modal" id="newOrder">
     <div class="modal-background" id="modal-back"></div>
     <div class="modal-content has-background-white has-text-black py-5 px-5">
-<<<<<<< HEAD
         <button class="delete is-pulled-right" id="close" aria-label="close"></button>
-=======
-        <button class="delete is-right" id="close" aria-label="close"></button>
->>>>>>> b1059ebb19b65faa8f721a7d05a718a4f90b7ef9
         <form action="" class="newJob">
             <p>New Job</p>
             <div class="field">
@@ -188,13 +128,19 @@
         </form>
     </div>
 </div>
-<<<<<<< HEAD
+
 <div class="modal" id="editOrder">
     <div class="modal-background" id="modal-back"></div>
     <div class="modal-content has-background-white has-text-black py-5 px-5">
-        <button class="delete level-right" id="close" aria-label="close"></button>
-        <form action="" class="newJob">
-            <p>New Job</p>
+        <button class="delete is-pulled-right" id="close" aria-label="close"></button>
+        <form action="" class="editJob">
+            <p>Edit Job</p>
+             <div class="field">
+                <label class="label">ID#</label>
+                <div class="control">
+                    <input class="input" id="idEdit" name="idEdit" type="text" placeholder="Text input" readonly>
+                </div>
+            </div>
             <div class="field">
                 <label class="label">Repair Order #</label>
                 <div class="control">
@@ -244,7 +190,3 @@
 </script>
 <script src="https://d3js.org/d3.v6.min.js"></script>
 <script src="/js/employeeAction.js" ></script>
-=======
-
-<script src="/js/employeeAction.js"></script>
->>>>>>> b1059ebb19b65faa8f721a7d05a718a4f90b7ef9
