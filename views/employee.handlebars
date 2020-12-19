@@ -27,18 +27,20 @@
             <h3>Productivity</h3>
             {{!-- employee productivity can go here and be hidden when not needed --}}
             <div class="empTaskBlk">
-                <form action="prodDisplay">
-                    <p>How would you like to display your data:</p>
-                    <input type="radio" id="daily" name="display" value="daily">
-                    <label for="daily">Daily</label><br>
-                    <input type="radio" id="biWeek" name="display" value="biWeek">
-                    <label for="biWeek">Bi-Weekly</label><br>
-                    <input type="radio" id="monthly" name="display" value="monthly">
-                    <label for="monthly">Monthly</label>
-                    <br>
-                    <input type="submit" value="Submit">
+                <form id="dateFilter" action="prodDisplay">
+                    <label for="category">Select Time Period:</label>
+                        <select class="custom-select" id="taskList">
+                            <option value="New">Daily</option>
+                            <option value="Search">Bi-Weekly</option>
+                            <option value="Edit">Monthly</option>
+                            <input type="submit" value="Submit">
+                        </select>
                 </form>
-                <div class="prodGraph"></div>
+                <div id="prodGraph">
+                    <svg id="lineGraph">
+
+                    </svg>
+                </div>
             </div>
             <div class="empProd">
             </div>
@@ -47,7 +49,26 @@
     <div class="container columns">
         <div class="column is-12 today">
             <h3>Job Data</h3>
-            {{!-- employee data can go here and be hidden when not needed --}}
+            <table id="orderTable">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Repair Order Number</th>
+                    <th>VIN #</th>
+                    <th>Year,Make,Model</th>
+                    <th>Customer Name</th>
+                    <th>Job Description</th>
+                    <th>Total Hours</th>
+                    <th>Created Date</th>
+                    <th>Modified Date</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            {{!-- employee data can go here and be hidden when not needed
             {{#each orders}}
             {{id}}
               <p> <h2>Order Number: {{repairOrderNumber}}</h2>
@@ -58,12 +79,12 @@
                 <div class="empData"></div>
             </div>
             <div class="empToday">
-            </div>
+            </div> --}}
         </div>
     </div>
 </main>
 {{!-- Modal area --}}
-<div class="modal">
+<div class="modal" id="newOrder">
     <div class="modal-background" id="modal-back"></div>
     <div class="modal-content has-background-white has-text-black py-5 px-5">
         <button class="delete level-right" id="close" aria-label="close"></button>
@@ -113,5 +134,58 @@
         </form>
     </div>
 </div>
-
+<div class="modal" id="editOrder">
+    <div class="modal-background" id="modal-back"></div>
+    <div class="modal-content has-background-white has-text-black py-5 px-5">
+        <button class="delete level-right" id="close" aria-label="close"></button>
+        <form action="" class="newJob">
+            <p>New Job</p>
+            <div class="field">
+                <label class="label">Repair Order #</label>
+                <div class="control">
+                    <input class="input" id="repairOrderNumberEdit" name="repairOrderNumber" type="text" placeholder="Text input">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">VIN</label>
+                <div class="control">
+                    <input class="input" id="vinEdit" name="vin" type="text" placeholder="Text input">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Year, Make and Model</label>
+                <div class="control">
+                    <input class="input" id="yearMakeModelEdit" name="yearMakeModel" type="text" placeholder="Text input">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Name</label>
+                <div class="control">
+                    <input class="input" id="nameEdit" name="name" type="text" placeholder="Text input">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Description</label>
+                <div class="control">
+                    <input class="input" id="descriptionEdit"name="description" type="text" placeholder="Text input">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">hours</label>
+                <div class="control">
+                    <input class="input" id="hoursEdit" name="hours" type="text" placeholder="Text input">
+                </div>
+            </div>
+            <div class="field is-grouped">
+                <div class="control">
+                    <button type="submit" id="repairOrderEdit" class="button is-link">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    var orders = {{{orders}}}
+</script>
+<script src="https://d3js.org/d3.v6.min.js"></script>
 <script src="/js/employeeAction.js" ></script>

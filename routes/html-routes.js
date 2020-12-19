@@ -25,14 +25,18 @@ module.exports = function(app) {
       let dataValues;
       if (req.user.clearance) {
         res.render("manager", { email: req.user.email });
-      } else if (dataValues !== undefined) {
+      } else if (dataValues === void 0) {
         const orders = await user.getOrders();
         console.log(orders[0].dataValues);
         const orderList = orders.map(order => {
           return order.dataValues;
         });
         console.log(orderList);
-        res.render("employee", { userInfo: req.user, orders: orderList });
+        const myObj = {
+          userInfo: req.user,
+          orders: JSON.stringify(orderList)
+        };
+        res.render("employee", myObj);
       } else {
         res.render("employee");
       }
