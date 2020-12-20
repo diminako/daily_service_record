@@ -1,10 +1,8 @@
 <main class="section">
     <div class="container columns">
         <div class="column is-one-third is-offset-1 tasks card column has-background-info has-text-white-ter ">
-            {{!-- display either employee or manager --}}
             <h1 class="greeting has-text-weight-bold is-size-3">Welcome <span class="member-name">{{email}}</span></h1>
             <h3 class="has-text-weight-bold is-size-5">Tasks</h3>
-            {{!-- employee tasks can go here and be hidden when not needed --}}
             <div class="empTaskBlk">
                 <div class="form-group">
                     <form id="employeeForm">
@@ -23,7 +21,6 @@
         <div class="column is-6 is-offset-1 productivity card has-background-info has-text-white-ter">
             <h1 class="greeting has-text-weight-bold is-size-3" id="date"></h1>
             <h3 class="has-text-weight-bold is-size-5">Productivity</h3>
-            {{!-- employee productivity can go here and be hidden when not needed --}}
             <div class="empTaskBlk">
                 <form id="dateFilter" action="prodDisplay">
                     <label for="category">Select Time Period:</label>
