@@ -1,4 +1,7 @@
 $(document).ready(() => {
+  const currentDay = moment().format("MMMM D, YYYY");
+  $("#date").text(currentDay);
+
   $.get("/api/user_data").then(data => {
     $(".member-name").text(data.email);
     $(".member-name").text(data.password);
