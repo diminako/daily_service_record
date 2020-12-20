@@ -41,6 +41,9 @@ $(document).ready(() => {
     $(".modal").removeClass("is-active");
   });
   console.log(orders);
+  console.log(moment.now());
+  let updatedOrders = orders.map(d => console.log(moment.format(d.createdAt)));
+
   const tRows = d3
     .select("#orderTable tbody")
     .selectAll("tr")
@@ -70,7 +73,6 @@ $(document).ready(() => {
           obj[key] = d[key];
           return obj;
         }, {});
-      console.log(filtered);
       return Object.values(filtered);
     })
     .join("td")
@@ -92,8 +94,8 @@ $(document).ready(() => {
     .on("click", function(event) {
       const rowId = event.target.parentNode.parentNode.id;
       const data = document.getElementById(rowId).querySelectorAll(".row-data");
-      console.log(data);
       $("#editOrder").addClass("is-active");
+      $("#idEdit").val(data[0].innerHTML);
       $("#repairOrderNumberEdit").val(data[1].innerHTML);
       $("#vinEdit").val(data[2].innerHTML);
       $("#yearMakeModelEdit").val(data[3].innerHTML);
