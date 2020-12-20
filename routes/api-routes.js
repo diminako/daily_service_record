@@ -74,11 +74,23 @@ module.exports = function(app) {
   //Route for creating new employee
   app.post("/api/user_employee", (req, res) => {
     db.User.create({
+      managerID: req.user.id,
       email: req.body.email,
       password: req.body.password,
       clearance: false
     }).then(() => res.sendStatus(200));
   });
+
+  // // Route for getting all employee stats - Not working.
+  // app.get("/api/user_employee_stats", function(req, res) {
+  //   db.User.findAll({
+  //     where: {
+  //       managerID: req.params.id
+  //     }
+  //   }).then(function(data) {
+  //     res.json(data);
+  //   });
+  // });
 
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", (req, res) => {

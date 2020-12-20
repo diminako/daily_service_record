@@ -20,6 +20,10 @@ module.exports = function(sequelize, DataTypes) {
     clearance: {
       type: DataTypes.BOOLEAN,
       allowNull: false
+    },
+    managerID: {
+      type: DataTypes.INTEGER,
+      allowNull: true
     }
   });
   User.associate = function(models) {
