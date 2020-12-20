@@ -59,15 +59,12 @@
                         <th>Created Date</th>
                         <th>Modified Date</th>
                         <th>Edit</th>
-                        <th></th>
+                        
                     </tr>
                 </thead>
                 <tbody>
-
                 </tbody>
             </table>
-
-
             <div>
                 <div class="empData"></div>
             </div>
@@ -76,11 +73,11 @@
         </div>
     </div>
 </main>
-{{!-- Modal area --}}
+{{!-- NewOrder Modal area --}}
 <div class="modal" id="newOrder">
     <div class="modal-background" id="modal-back"></div>
     <div class="modal-content has-background-white has-text-black py-5 px-5">
-        <button class="delete is-right" id="close" aria-label="close"></button>
+        <button class="delete is-pulled-right" id="close" aria-label="close"></button>
         <form action="" class="newJob">
             <p>New Job</p>
             <div class="field">
@@ -131,9 +128,15 @@
 <div class="modal" id="editOrder">
     <div class="modal-background" id="modal-back"></div>
     <div class="modal-content has-background-white has-text-black py-5 px-5">
-        <button class="delete level-right" id="close" aria-label="close"></button>
-        <form action="" class="newJob">
-            <p>New Job</p>
+        <button class="delete is-pulled-right" id="close" aria-label="close"></button>
+        <form action="" class="editJob">
+            <p>Edit Job</p>
+             <div class="field">
+                <label class="label">ID#</label>
+                <div class="control">
+                    <input class="input" id="idEdit" name="idEdit" type="text" placeholder="Text input" readonly>
+                </div>
+            </div>
             <div class="field">
                 <label class="label">Repair Order #</label>
                 <div class="control">
@@ -184,4 +187,4 @@
     var orders = {{{ orders }}}
 </script>
 <script src="https://d3js.org/d3.v6.min.js"></script>
-<script src="/js/employeeAction.js"></script>
+<script src="/js/employeeAction.js" ></script>

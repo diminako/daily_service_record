@@ -46,6 +46,18 @@ module.exports = function(app) {
     }
   });
 
+  // PUT route for updating order
+  app.put("/api/order", function(req, res) {
+    console.log(req.body);
+    db.Order.update(req.body, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function(dbOrder) {
+      res.json(dbOrder);
+    });
+  });
+
   app.post("/api/employee/create", (req, res) => {
     res.sendStatus(200);
   });
