@@ -1,3 +1,5 @@
+const currentDay = moment().format("MMMM D, YYYY");
+$("#date").text(currentDay);
 /* eslint-disable prefer-arrow-callback */
 $(document).ready(function() {
   console.log("working");
