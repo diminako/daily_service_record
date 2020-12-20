@@ -1,9 +1,12 @@
 $(document).ready(() => {
+  const currentDay = moment().format("MMMM D, YYYY");
+  $("#date").text(currentDay);
+
   $.get("/api/user_data").then(data => {
     $(".member-name").text(data.email);
     $(".member-name").text(data.password);
   });
-
+  // shows the modal if the user selects new or logs out
   $("#employeeForm").on("submit", function(event) {
     const taskList = $("#taskList").val();
     console.log(taskList);
@@ -18,6 +21,7 @@ $(document).ready(() => {
   $("prodDisplay").on("submit", () => {
     console.log("select");
   });
+  // creates the variable of the information that is in the modal
   $(".newJob").on("submit", function(event) {
     event.preventDefault();
     const repairOrderData = {
@@ -30,6 +34,7 @@ $(document).ready(() => {
     };
     createRepairOrders(repairOrderData);
   });
+  // posts the new info to the api
   function createRepairOrders(repairOrderData) {
     $.post("/api/order", repairOrderData).then(res => {
       if (res === "OK") {
@@ -51,7 +56,7 @@ $(document).ready(() => {
     };
     updateOrder(editRepairOrderData);
   });
-
+  // updates the order
   function updateOrder(editRepairOrderData) {
     $.ajax({
       method: "PUT",
@@ -61,7 +66,7 @@ $(document).ready(() => {
       location.reload();
     });
   }
-
+  // hides the modal if the delete button is clicked
   $(".delete").click(function() {
     $(".modal").removeClass("is-active");
   });
