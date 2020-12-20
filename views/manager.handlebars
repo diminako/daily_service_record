@@ -1,33 +1,35 @@
 {{!-- display either employee or manager --}}
-<h1>Welcome <span class="member-name">{{email}}</span></h1>
+
 
 <main class="section">
     <div class="container columns">
-        <div class="column is-6 tasks">
-            <h3>Tasks</h3>
-            {{!-- manager tasks can go here and be hidden when not needed --}}
-            <div class="mgrTasks">
-                <div class="mgrTaskBlk">
-                    <div class="form-group">
-                        <form id="managerForm">
-                            <label for="category">Select Task:</label>
-                            <select class="custom-select" id="taskList">
-                                <option value="view employee stats">View Employee Stats</option>
-                                <option value="view overall hours">View Overall Hours</option>
-                                {{!-- <option value="weekly recap">Weekly Recap</option> --}}
-                                {{!-- <option value="bi-weekly recap">Bi-Weekly Recap</option> --}}
-                                {{!-- <option value="range of dates">Range of Dates</option> --}}
-                                <option value="newEmployee">Create Employee</option>
-                                <option value="Logout">logout</option>
-                                <input type="submit" value="Submit">
-                            </select>
-                        </form>
+        <div class="column is-6 tasks card column is-6  has-background-info has-text-white-ter ">
+            <h1 class="greeting has-text-weight-bold is-size-3">Welcome <span class="member-name">{{email}}</span></h1>
+            <h3class="has-text-weight-bold is-size-5">Tasks</h3>
+                {{!-- manager tasks can go here and be hidden when not needed --}}
+                <div class="mgrTasks">
+                    <div class="mgrTaskBlk">
+                        <div class="form-group">
+                            <form id="managerForm">
+                                <label for="category">Select Task:</label>
+                                <select class="custom-select" id="taskList">
+                                    <option value="view employee stats">View Employee Stats</option>
+                                    <option value="view overall hours">View Overall Hours</option>
+                                    {{!-- <option value="weekly recap">Weekly Recap</option> --}}
+                                    {{!-- <option value="bi-weekly recap">Bi-Weekly Recap</option> --}}
+                                    {{!-- <option value="range of dates">Range of Dates</option> --}}
+                                    <option value="newEmployee">Create Employee</option>
+                                    <option value="Logout">logout</option>
+                                    <input type="submit" value="Submit">
+                                </select>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
-        <div class="column is-6 productivity">
-            <h3>Productivity</h3>
+        <div class="column is-6 productivity card has-background-info has-text-white-ter">
+            <h1 class="greeting has-text-weight-bold is-size-3" id="date"></h1>
+            <h3 class="has-text-weight-bold is-size-5">Productivity</h3>
             {{!-- manager productivity can go here and be hidden when not needed --}}
             <div class="mgrProd">
                 <div class="mgrTaskBlk">
