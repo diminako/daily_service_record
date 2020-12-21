@@ -1,19 +1,14 @@
-{{!-- display either employee or manager --}}
-<h1>Welcome <span class="member-name">{{email}}</span></h1>
-
 <main class="section">
     <div class="container columns">
-        <div class="column is-6 tasks">
-            <h3>Tasks</h3>
-            {{!-- employee tasks can go here and be hidden when not needed --}}
+        <div class="column is-one-third is-offset-1 tasks card column has-background-info has-text-white-ter ">
+            <h1 class="greeting has-text-weight-bold is-size-3">Welcome <span class="member-name">{{email}}</span></h1>
+            <h3 class="has-text-weight-bold is-size-5">Tasks</h3>
             <div class="empTaskBlk">
                 <div class="form-group">
                     <form id="employeeForm">
                         <label for="category">Select Task:</label>
                         <select class="custom-select" id="taskList">
                             <option value="New">New Job</option>
-                            <option value="Search">Search Previous</option>
-                            <option value="Edit">Edit Job</option>
                             <option value="Logout">logout</option>
                             <input type="submit" value="Submit">
                         </select>
@@ -23,23 +18,25 @@
             <div class="empTasks">
             </div>
         </div>
-        <div class="column is-6 productivity">
-            <h3>Productivity</h3>
-            {{!-- employee productivity can go here and be hidden when not needed --}}
+        <div class="column is-6 is-offset-1 productivity card has-background-info has-text-white-ter">
+            <h1 class="greeting has-text-weight-bold is-size-3" id="date"></h1>
+            <h3 class="has-text-weight-bold is-size-5">Productivity</h3>
             <div class="empTaskBlk">
                 <form id="dateFilter" action="prodDisplay">
                     <label for="category">Select Time Period:</label>
-                        <select class="custom-select" id="taskList">
-                            <option value="New">Daily</option>
-                            <option value="Search">Bi-Weekly</option>
-                            <option value="Edit">Monthly</option>
-                            <input type="submit" value="Submit">
-                        </select>
+                    <select class="custom-select" id="dateTaskList">
+                        <option value="Daily">Daily</option>
+                        <option value="Bi-Weekly">Bi-Weekly</option>
+                        <option value="Monthly">Monthly</option>
+                        <input type="submit" value="Submit">
+                    </select>
                 </form>
                 <div id="prodGraph">
-                    <svg id="lineGraph">
+                    <div class="columns">
+                            <svg class="column is-12" id="lineGraph">
 
-                    </svg>
+                            </svg>
+                    </div>
                 </div>
             </div>
             <div class="empProd">
@@ -47,40 +44,40 @@
         </div>
     </div>
     <div class="container columns">
-        <div class="column is-12 today">
-            <h3>Job Data</h3>
+        <div class="column is-11 today is-offset-1">
+            <h3 class="has-text-weight-bold is-size-5 ">Job Data</h3>
             <table id="orderTable">
                 <thead>
-                <tr>
-                    <th></th>
-                    <th>Repair Order Number</th>
-                    <th>VIN #</th>
-                    <th>Year,Make,Model</th>
-                    <th>Customer Name</th>
-                    <th>Job Description</th>
-                    <th>Total Hours</th>
-                    <th>Created Date</th>
-                    <th>Modified Date</th>
-                    <th></th>
-                </tr>
+                    <tr class="has-background-info ">
+                        <th></th>
+                        <th class="has-text-white-ter">Repair Order Number</th>
+                        <th class="has-text-white-ter">VIN #</th>
+                        <th class="has-text-white-ter">Year,Make,Model</th>
+                        <th class="has-text-white-ter">Customer Name</th>
+                        <th class="has-text-white-ter">Job Description</th>
+                        <th class="has-text-white-ter">Total Hours</th>
+                        <th class="has-text-white-ter">Created Date</th>
+                        <th class="has-text-white-ter">Modified Date</th>
+                        <th class="has-text-white-ter">Edit</th>
+
+                    </tr>
                 </thead>
                 <tbody>
-
                 </tbody>
             </table>
             <div>
                 <div class="empData"></div>
             </div>
             <div class="empToday">
-            </div> 
+            </div>
         </div>
     </div>
 </main>
-{{!-- Modal area --}}
+{{!-- NewOrder Modal area --}}
 <div class="modal" id="newOrder">
     <div class="modal-background" id="modal-back"></div>
     <div class="modal-content has-background-white has-text-black py-5 px-5">
-        <button class="delete is-right" id="close" aria-label="close"></button>
+        <button class="delete is-pulled-right" id="close" aria-label="close"></button>
         <form action="" class="newJob">
             <p>New Job</p>
             <div class="field">
@@ -131,19 +128,27 @@
 <div class="modal" id="editOrder">
     <div class="modal-background" id="modal-back"></div>
     <div class="modal-content has-background-white has-text-black py-5 px-5">
-        <button class="delete level-right" id="close" aria-label="close"></button>
-        <form action="" class="newJob">
-            <p>New Job</p>
+        <button class="delete is-pulled-right" id="close" aria-label="close"></button>
+        <form action="" class="editJob">
+            <p>Edit Job</p>
+            <div class="field">
+                <label class="label">ID#</label>
+                <div class="control">
+                    <input class="input" id="idEdit" name="idEdit" type="text" placeholder="Text input" readonly>
+                </div>
+            </div>
             <div class="field">
                 <label class="label">Repair Order ID</label>
                 <div class="control">
-                    <input class="input" id="idEdit" name="repairOrderNumber" type="text" placeholder="Text input" readonly>
+                    <input class="input" id="idEdit" name="repairOrderNumber" type="text" placeholder="Text input"
+                        readonly>
                 </div>
             </div>
             <div class="field">
                 <label class="label">Repair Order #</label>
                 <div class="control">
-                    <input class="input" id="repairOrderNumberEdit" name="repairOrderNumber" type="text" placeholder="Text input">
+                    <input class="input" id="repairOrderNumberEdit" name="repairOrderNumber" type="text"
+                        placeholder="Text input">
                 </div>
             </div>
             <div class="field">
@@ -155,7 +160,8 @@
             <div class="field">
                 <label class="label">Year, Make and Model</label>
                 <div class="control">
-                    <input class="input" id="yearMakeModelEdit" name="yearMakeModel" type="text" placeholder="Text input">
+                    <input class="input" id="yearMakeModelEdit" name="yearMakeModel" type="text"
+                        placeholder="Text input">
                 </div>
             </div>
             <div class="field">
@@ -167,7 +173,7 @@
             <div class="field">
                 <label class="label">Description</label>
                 <div class="control">
-                    <input class="input" id="descriptionEdit"name="description" type="text" placeholder="Text input">
+                    <input class="input" id="descriptionEdit" name="description" type="text" placeholder="Text input">
                 </div>
             </div>
             <div class="field">
@@ -185,8 +191,7 @@
     </div>
 </div>
 <script>
-    var orders = {{{orders}}}
+    var orders = {{{ orders }}}
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="https://d3js.org/d3.v6.min.js"></script>
-<script src="/js/employeeAction.js" ></script>
+<script src="/js/employeeAction.js"></script>
