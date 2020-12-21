@@ -3,7 +3,7 @@ const db = require("../models");
 const passport = require("../config/passport");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -47,13 +47,13 @@ module.exports = function(app) {
   });
 
   // PUT route for updating order
-  app.put("/api/order", function(req, res) {
+  app.put("/api/order", function (req, res) {
     console.log(req.body);
     db.Order.update(req.body, {
       where: {
         id: req.body.id
       }
-    }).then(function(dbOrder) {
+    }).then(function (dbOrder) {
       res.json(dbOrder);
     });
   });
@@ -66,15 +66,31 @@ module.exports = function(app) {
     // DO NOT UPDATE THE PASSWORD OR ID
     res.sendStatus(200);
   });
+
+  //  read information for orders
+  app.get("/api/user_orders", (req, res) => {
+    if (req.user) {
+      const userId = req.user.id;
+      db.Order.findAll({
+        where: {
+          UserId: userId
+        }
+      }).then(results => res.json(results));
+    } else {
+      res.sendStatus(403);
+    }
+  });
+
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");
   });
+
   //Route for creating new employee
   app.post("/api/user_employee", (req, res) => {
     db.User.create({
-      managerID: req.user.id,
+      UserId: req.user.id,
       email: req.body.email,
       password: req.body.password,
       clearance: false

@@ -24,6 +24,7 @@ module.exports = function(app) {
     db.User.findByPk(req.user.id).then(async user => {
       let dataValues;
       if (req.user.clearance) {
+        
         res.render("manager", { email: req.user.email });
       } else if (dataValues === void 0) {
         console.log(dataValues + "<---------");
