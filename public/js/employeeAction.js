@@ -7,7 +7,7 @@ $("#date").text(currentDay);
 const displayUserOrders = async () => {
   const userOrders = await $.get("/api/user_orders");
   console.log(userOrders);
-}
+};
 displayUserOrders();
 
 $.get("/api/user_data").then(data => {
@@ -15,7 +15,7 @@ $.get("/api/user_data").then(data => {
   $(".member-name").text(data.password);
 });
 // shows the modal if the user selects new or logs out
-$("#employeeForm").on("submit", function (event) {
+$("#employeeForm").on("submit", function(event) {
   const taskList = $("#taskList").val();
   console.log(taskList);
   event.preventDefault();
@@ -30,7 +30,7 @@ $("prodDisplay").on("submit", () => {
   console.log("select");
 });
 // creates the variable of the information that is in the modal
-$(".newJob").on("submit", function (event) {
+$(".newJob").on("submit", function(event) {
   event.preventDefault();
   const repairOrderData = {
     repairOrderNumber: $("#repairOrderNumber").val(),
@@ -51,7 +51,7 @@ function createRepairOrders(repairOrderData) {
   });
 }
 // Edit Order JavaScript
-$(".editJob").on("submit", function (event) {
+$(".editJob").on("submit", function(event) {
   event.preventDefault();
   const editRepairOrderData = {
     id: $("#idEdit").val(),
@@ -70,12 +70,12 @@ function updateOrder(editRepairOrderData) {
     method: "PUT",
     url: "/api/order",
     data: editRepairOrderData
-  }).then(function () {
+  }).then(function() {
     location.reload();
   });
 }
 // hides the modal if the delete button is clicked
-$(".delete").click(function () {
+$(".delete").click(function() {
   $(".modal").removeClass("is-active");
 });
 console.log(orders);
@@ -84,13 +84,13 @@ const tRows = d3
   .selectAll("tr")
   .data(orders)
   .join("tr")
-  .attr("id", function (d, i) {
+  .attr("id", function(d, i) {
     return i;
   });
 
 tRows
   .selectAll("td")
-  .data(function (d) {
+  .data(function(d) {
     const allowed = [
       "repairOrderNumber",
       "vin",
@@ -112,7 +112,7 @@ tRows
     return Object.values(filtered);
   })
   .join("td")
-  .attr("class", function () {
+  .attr("class", function() {
     return "row-data";
   })
   .text(d => d);
@@ -123,11 +123,11 @@ tRows
   .join("td")
   .attr("class", "button")
   .append("button")
-  .text(function () {
+  .text(function() {
     return "Edit";
   })
   .attr("class", "edit-order")
-  .on("click", function (event) {
+  .on("click", function(event) {
     const rowId = event.target.parentNode.parentNode.id;
     const data = document.getElementById(rowId).querySelectorAll(".row-data");
     console.log(data);

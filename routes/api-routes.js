@@ -3,7 +3,7 @@ const db = require("../models");
 const passport = require("../config/passport");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
-module.exports = function (app) {
+module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -47,13 +47,13 @@ module.exports = function (app) {
   });
 
   // PUT route for updating order
-  app.put("/api/order", function (req, res) {
+  app.put("/api/order", function(req, res) {
     console.log(req.body);
     db.Order.update(req.body, {
       where: {
         id: req.body.id
       }
-    }).then(function (dbOrder) {
+    }).then(function(dbOrder) {
       res.json(dbOrder);
     });
   });
