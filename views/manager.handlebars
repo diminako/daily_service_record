@@ -104,27 +104,35 @@
     </div>
 </div>
 
-<table class="demo">
-    <caption>Employee Data</caption>
-    <thead>
-        <tr>
-            <th>Employee Email</th>
-            <th>Start Date</th>
-            <th>Employee ID</th>
-            <th>Manager Associated ID</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each employees}}
-        <tr>
-            <td>{{email}}</td>
-            <td>{{createdAt}}</td>
-            <td>{{id}}</td>
-            <td>{{UserId}}</td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
+<div class="columns is-centered">
+    {{!-- <div class="column is-1"></div> --}}
+    <div class="column is-10">
+        <table class="managerTable is-half" id="managerTable">
+            <caption>
+                <h2>Employee Data</h2>
+            </caption>
+            <thead>
+                <tr class="has-background-info has-text-white-ter ">
+                    <th class=" has-text-white-ter">Employee Email</th>
+                    <th class=" has-text-white-ter">Start Date</th>
+                    <th class=" has-text-white-ter">Employee ID</th>
+                    <th class=" has-text-white-ter">Manager Associated ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each employees}}
+                <tr>
+                    <td>{{email}}</td>
+                    <td>{{createdAt}}</td>
+                    <td>{{id}}</td>
+                    <td>{{UserId}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{!-- <div class="column is-1"></div> --}}
+</div>
 
 <script src="https://d3js.org/d3.v6.min.js"></script>
 <script src="/js/managerAction.js"></script>

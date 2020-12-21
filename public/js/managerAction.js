@@ -66,3 +66,8 @@ const displayUserOrders = async () => {
   console.log(employees);
 };
 displayUserOrders();
+
+const test = async () => {
+  console.log(await $.get("/api/myEmployees"));
+};
+test()

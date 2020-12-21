@@ -41,17 +41,18 @@ input {
   background-color:rgb(120,205,209);
 };
 /* TABLE CSS */
-.demo {
-  border:1px solid #C0C0C0;
+
+table {
+  border:2px solid #C0C0C0;
   border-collapse:collapse;
   padding:5px;
 };
-.demo th {
-  border:1px solid #C0C0C0;
+.managerTable th {
+  border:2px solid #C0C0C0;
   padding:5px;
   background:#F0F0F0;
 };
-.demo td {
-  border:1px solid #C0C0C0;
+.managerTable td {
+  border:2px solid #C0C0C0;
   padding:5px;
 };

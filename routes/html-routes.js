@@ -28,13 +28,22 @@ module.exports = function(app) {
           where: { UserId: req.user.id },
           include: [{ model: db.Order }]
         });
-        const empList = employees.map(employee => {
-          return employee.dataValues;
+        const fixed = JSON.parse(JSON.stringify(employees));
+        console.log(fixed[0].Orders);
+
+        const fixedWithCount = fixed.map(employee => {
+          employee.total = 0;
+          employee.Orders.map(order => {
+            employee.total += order.hours;
+          });
+          return employee;
         });
+        console.log(fixedWithCount);
         const myEmp = {
           userInfo: req.user,
-          employees: empList
+          employees: fixed
         };
+        // console.log(employees[1].Orders);
         res.render("manager", myEmp);
       } else if (dataValues === void 0) {
         const orders = await user.getOrders();
