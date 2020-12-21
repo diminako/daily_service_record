@@ -44,7 +44,7 @@
             </div>
         </div>
     </div>
-    <div class="container columns">
+    {{!-- <div class="container columns">
         <div class="column is-11 today is-offset-1">
             <h3 class="has-text-weight-bold is-size-5 ">Job Data</h3>
                         <table id="orderTable">
@@ -69,7 +69,7 @@
             </table>
 
         </div>
-    </div>
+    </div> --}}
 </main>
 {{!-- New User Modal --}}
 <div class="modal">
@@ -101,4 +101,27 @@
     </div>
 </div>
 
+            <table class="demo">
+                <caption>Employee Data</caption>
+                <thead>
+                    <tr>
+                        <th>Employee Email</th>
+                        <th>Start Date</th>
+                        <th>Employee ID</th>
+                        <th>Manager Associated ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each employees}}
+                    <tr>
+                        <td>{{email}}</td>
+                        <td>{{createdAt}}</td>
+                        <td>{{id}}</td>
+                        <td>{{UserId}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+
+<script src="https://d3js.org/d3.v6.min.js"></script>
 <script src="/js/managerAction.js"></script>

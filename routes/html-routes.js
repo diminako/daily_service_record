@@ -24,17 +24,26 @@ module.exports = function(app) {
     db.User.findByPk(req.user.id).then(async user => {
       let dataValues;
       if (req.user.clearance) {
-        res.render("manager", { email: req.user.email });
+        const employees = await db.User.findAll({
+          where: { UserId: req.user.id },
+          include: [{ model: db.Order }]
+        });
+        const empList = employees.map(employee => {
+          return employee.dataValues;
+        });
+        const myEmp = {
+          userInfo: req.user,
+          employees: empList
+        };
+        res.render("manager", myEmp);
       } else if (dataValues === void 0) {
-        console.log(dataValues + "<---------");
         const orders = await user.getOrders();
         const orderList = orders.map(order => {
           return order.dataValues;
         });
-        console.log(orderList);
         const myObj = {
           userInfo: req.user,
-          orders: JSON.stringify(orderList)
+          orders: orderList
         };
         res.render("employee", myObj);
       } else {
