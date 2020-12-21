@@ -151,7 +151,7 @@ module.exports = function(app) {
       const fixedWithCount = fixed.map(employee => {
         employee.total = 0;
         employee.Orders.map(order => {
-          employee.total += order.hours;
+          return (employee.total += order.hours);
         });
         return employee;
       });

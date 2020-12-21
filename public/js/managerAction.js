@@ -70,4 +70,4 @@ displayUserOrders();
 const test = async () => {
   console.log(await $.get("/api/myEmployees"));
 };
-test()
+test();
