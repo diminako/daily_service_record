@@ -24,54 +24,55 @@
                 </div>
             </div>
         </div>
-            <div class="column is-6 is-offset-1 productivity card has-background-info has-text-white-ter">
-                <h1 class="greeting has-text-weight-bold is-size-3" id="date"></h1>
-                <h3 class="has-text-weight-bold is-size-5">Productivity</h3>
-                <div class="mgrProd">
-                    <div class="mgrTaskBlk">
-                        <form action="prodDisplay">
-                            <p>How would you like to display your data:</p>
-                            <input type="radio" id="daily" name="display" value="daily">
-                            <label for="daily">Daily</label><br>
-                            <input type="radio" id="biWeek" name="display" value="biWeek">
-                            <label for="biWeek">Bi-Weekly</label><br>
-                            <input type="radio" id="monthly" name="display" value="monthly">
-                            <label for="monthly">Monthly</label>
-                            <br>
-                            <input type="submit" value="Submit">
-                        </form>
-                        <div class="prodGraph"></div>
-                    </div>
-
+        <div class="column is-6 is-offset-1 productivity card has-background-info has-text-white-ter">
+            <h1 class="greeting has-text-weight-bold is-size-3" id="date"></h1>
+            <h3 class="has-text-weight-bold is-size-5">Productivity</h3>
+            <div class="mgrProd">
+                <div class="mgrTaskBlk">
+                    <form action="prodDisplay">
+                        <p>How would you like to display your data:</p>
+                        <input type="radio" id="daily" name="display" value="daily">
+                        <label for="daily">Daily</label><br>
+                        <input type="radio" id="biWeek" name="display" value="biWeek">
+                        <label for="biWeek">Bi-Weekly</label><br>
+                        <input type="radio" id="monthly" name="display" value="monthly">
+                        <label for="monthly">Monthly</label>
+                        <br>
+                        <input type="submit" value="Submit">
+                    </form>
+                    <div class="prodGraph"></div>
                 </div>
-            </div>
-        </div>
-        <div class="container columns">
-            <div class="column is-11 today is-offset-1">
-                <h3 class="has-text-weight-bold is-size-5 ">Job Data</h3>
-                <table id="orderTable">
-                    <thead>
-                        <tr class="has-background-info ">
-                            <th></th>
-                            <th class="has-text-white-ter">Repair Order Number</th>
-                            <th class="has-text-white-ter">VIN #</th>
-                            <th class="has-text-white-ter">Year,Make,Model</th>
-                            <th class="has-text-white-ter">Customer Name</th>
-                            <th class="has-text-white-ter">Job Description</th>
-                            <th class="has-text-white-ter">Total Hours</th>
-                            <th class="has-text-white-ter">UserId</th>
-                            <th class="has-text-white-ter">Created Date</th>
-                            <th class="has-text-white-ter">Modified Date</th>
-                            <th class="has-text-white-ter">Edit</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
 
             </div>
         </div>
+    </div>
+    </div>
+    {{!-- <div class="container columns">
+        <div class="column is-11 today is-offset-1">
+            <h3 class="has-text-weight-bold is-size-5 ">Job Data</h3>
+            <table id="orderTable">
+                <thead>
+                    <tr class="has-background-info ">
+                        <th></th>
+                        <th class="has-text-white-ter">Repair Order Number</th>
+                        <th class="has-text-white-ter">VIN #</th>
+                        <th class="has-text-white-ter">Year,Make,Model</th>
+                        <th class="has-text-white-ter">Customer Name</th>
+                        <th class="has-text-white-ter">Job Description</th>
+                        <th class="has-text-white-ter">Total Hours</th>
+                        <th class="has-text-white-ter">UserId</th>
+                        <th class="has-text-white-ter">Created Date</th>
+                        <th class="has-text-white-ter">Modified Date</th>
+                        <th class="has-text-white-ter">Edit</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+        </div>
+    </div> --}}
 </main>
 {{!-- New User Modal --}}
 <div class="modal">
@@ -103,4 +104,27 @@
     </div>
 </div>
 
+<table class="demo">
+    <caption>Employee Data</caption>
+    <thead>
+        <tr>
+            <th>Employee Email</th>
+            <th>Start Date</th>
+            <th>Employee ID</th>
+            <th>Manager Associated ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each employees}}
+        <tr>
+            <td>{{email}}</td>
+            <td>{{createdAt}}</td>
+            <td>{{id}}</td>
+            <td>{{UserId}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<script src="https://d3js.org/d3.v6.min.js"></script>
 <script src="/js/managerAction.js"></script>

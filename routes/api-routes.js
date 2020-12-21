@@ -97,6 +97,14 @@ module.exports = function(app) {
     }).then(() => res.sendStatus(200));
   });
 
+  app.get("/api/user_employees", (req, res) => {
+    db.User.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    }).then(() => res.sendStatus(200));
+  });
+
   // // Route for getting all employee stats - Not working.
   // app.get("/api/user_employee_stats", function(req, res) {
   //   db.User.findAll({
