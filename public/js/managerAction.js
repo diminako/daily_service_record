@@ -17,10 +17,12 @@ $("#managerForm").on("submit", function(event) {
   event.preventDefault();
   if (taskList === "newEmployee") {
     $(".modal").addClass("is-active");
+  } else if (taskList === "refreshView") {
+    console.log("reload");
+    location.reload();
   } else if (taskList === "Logout") {
     window.location.replace("/logout");
   }
-  // console.log(taskList);
 });
 
 $(".delete").click(function() {
@@ -53,21 +55,9 @@ function addEmployee(email, password) {
     }
   });
 }
-$("#managerForm").on("submit", function(event) {
-  const taskList = $("#taskList").val();
-  event.preventDefault();
-  if (taskList === "viewStats") {
-    console.log("view");
-  }
-});
 
 const displayUserOrders = async () => {
   const employees = await $.get("/api/user_employees");
   console.log(employees);
 };
 displayUserOrders();
-
-const test = async () => {
-  console.log(await $.get("/api/myEmployees"));
-};
-test();
