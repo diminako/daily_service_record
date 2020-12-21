@@ -66,15 +66,31 @@ module.exports = function(app) {
     // DO NOT UPDATE THE PASSWORD OR ID
     res.sendStatus(200);
   });
+
+  //  read information for orders
+  app.get("/api/user_orders", (req, res) => {
+    if (req.user) {
+      const userId = req.user.id;
+      db.Order.findAll({
+        where: {
+          UserId: userId
+        }
+      }).then(results => res.json(results));
+    } else {
+      res.sendStatus(403);
+    }
+  });
+
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");
   });
+
   //Route for creating new employee
   app.post("/api/user_employee", (req, res) => {
     db.User.create({
-      managerID: req.user.id,
+      UserId: req.user.id,
       email: req.body.email,
       password: req.body.password,
       clearance: false
