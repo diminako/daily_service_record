@@ -16,6 +16,8 @@ User Story:
   * [Questions](#questions)
 
 ## Screenshots
+![Screen Shot 2020-12-21 at 10 27 00 PM](https://user-images.githubusercontent.com/72622031/102845579-da0b3b00-43db-11eb-8248-c9883bc56227.png)
+
 
 ## Usage
 * Please visit the live application at https://mighty-spire-89072.herokuapp.com/
