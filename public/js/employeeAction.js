@@ -493,7 +493,7 @@ $("#employeeForm").on("submit", function(event) {
   const taskList = $("#taskList").val();
   console.log(taskList);
   event.preventDefault();
-  if (taskList === "New") {
+  if (taskList === "newJob") {
     $("#newOrder").addClass("is-active");
   } else if (taskList === "Logout") {
     window.location.replace("/logout");
