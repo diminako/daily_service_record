@@ -146,13 +146,14 @@ module.exports = function(app) {
         include: [{ model: db.Order }]
       });
       const fixed = JSON.parse(JSON.stringify(employees));
-      console.log(fixed[0].Orders);
 
       const fixedWithCount = fixed.map(employee => {
         employee.total = 0;
-        employee.Orders.map(order => {
-          return (employee.total += order.hours);
-        });
+        if (employee.Orders) {
+          employee.Orders.map(order => {
+            return (employee.total += order.hours);
+          });
+        }
         return employee;
       });
       console.log(fixedWithCount);
