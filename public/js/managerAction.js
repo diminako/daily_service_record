@@ -63,6 +63,79 @@ const displayUserOrders = async () => {
 displayUserOrders();
 
 const test = async () => {
-  console.log(await $.get("/api/myEmployees"));
+  const myUsers = await $.get("/api/myEmployees");
+
+  const width = d3
+    .select("#lineGraph")
+    .node()
+    .getBoundingClientRect().width;
+  const height = d3
+    .select("#lineGraph")
+    .node()
+    .getBoundingClientRect().height;
+
+  const x = d3.scaleBand().rangeRound([0, width - 50]);
+  x.domain(
+    myUsers.employees.map(function(d) {
+      return d.email;
+    })
+  );
+  const y = d3.scaleLinear().range([height - 50, 10]);
+  y.domain([
+    0,
+    d3.max(myUsers.employees, function(d) {
+      return d.total;
+    })
+  ]);
+  const g = d3.select("#lineGraph").append("g");
+  g.append("g")
+    .attr("class", "xaxis")
+    .attr("transform", `translate(10,${height - 50})`)
+    .call(d3.axisBottom(x))
+    .selectAll("text")
+    .attr("y", 10)
+    .attr("x", 0)
+    .attr("dy", ".5em")
+    .attr("transform", "rotate(0)")
+    .style("text-anchor", "middle");
+
+  g.append("g")
+    .attr("class", "yaxis")
+    .attr("transform", "translate(25,0)")
+    .call(d3.axisLeft(y))
+    .selectAll("text")
+    .attr("dx", ".25em");
+
+  d3.select("#lineGraph")
+    .selectAll("circle")
+    .data(myUsers.employees)
+    .join("circle")
+    .attr("cx", function(d) {
+      return x(d.email) + 100;
+    })
+    .attr("cy", function(d) {
+      return y(d.total);
+    })
+    .attr("class", "circle")
+    .attr("r", 5)
+    .attr("fill", "orange");
+
+  const valueline = d3
+    .line()
+    .x(function(d) {
+      return x(d.email) + 100;
+    })
+    .y(function(d) {
+      return y(d.total);
+    })
+    .curve(d3.curveMonotoneX);
+
+  d3.select("#lineGraph")
+    .append("path")
+    .data([myUsers.employees])
+    .attr("class", "line")
+    .attr("stroke", "white")
+    .attr("fill", "none")
+    .attr("d", valueline);
 };
 test();
