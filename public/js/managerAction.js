@@ -19,7 +19,11 @@ $(document).ready(function() {
     } else if (taskList === "Logout") {
       window.location.replace("/logout");
     }
-    console.log(taskList);
+    // console.log(taskList);
+  });
+
+  $(".delete").click(function() {
+    $(".modal").removeClass("is-active");
   });
 
   $("#newUser").on("submit", function(event) {
@@ -44,11 +48,20 @@ $(document).ready(function() {
       console.log(res);
       if (res === "OK") {
         console.log("Okurr");
-        // location.reload();
+        location.reload();
       }
     });
   }
-  $("#close").click(function() {
-    $(".modal").removeClass("is-active");
+  $("#managerForm").on("submit", function(event) {
+    const taskList = $("#taskList").val();
+    console.log(taskList);
+    event.preventDefault();
+    // if (taskList === "viewStats") {
+    //   $.get("/api/user_employee_stats").then(function(res) {
+    //     if (res === "OK") {
+    //       console.log(res);
+    //     }
+    //   });
+    // }
   });
 });

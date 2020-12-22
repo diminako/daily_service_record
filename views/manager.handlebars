@@ -1,25 +1,24 @@
 <main class="section">
     <div class="container columns">
-        <div class="column is-one-third is-offset-1 tasks card column has-background-info has-text-white-ter ">
-            <h1 class="greeting has-text-weight-bold is-size-3">Welcome <span class="member-name">{{email}}</span></h1>
-            <h3class="has-text-weight-bold is-size-5">Tasks</h3>
-                <div class="mgrTasks">
-                    <div class="mgrTaskBlk">
-                        <div class="form-group">
-                            <form id="managerForm">
-                                <label for="category">Select Task:</label>
-                                <select class="custom-select" id="taskList">
-                                    <option value="view employee stats">View Employee Stats</option>
-                                    <option value="view overall hours">View Overall Hours</option>
-                                    {{!-- <option value="weekly recap">Weekly Recap</option> --}}
-                                    {{!-- <option value="bi-weekly recap">Bi-Weekly Recap</option> --}}
-                                    {{!-- <option value="range of dates">Range of Dates</option> --}}
-                                    <option value="newEmployee">Create Employee</option>
-                                    <option value="Logout">logout</option>
-                                    <input type="submit" value="Submit">
-                                </select>
-                            </form>
-                        </div>
+        <div class="column is-6 tasks">
+            <h3>Tasks</h3>
+            {{!-- manager tasks can go here and be hidden when not needed --}}
+            <div class="mgrTasks">
+                <div class="mgrTaskBlk">
+                    <div class="form-group">
+                        <form id="managerForm">
+                            <label for="category">Select Task:</label>
+                            <select class="custom-select" id="taskList">
+                                <option value="viewStats">View Employee Stats</option>
+                                <option value="viewHours">View Overall Hours</option>
+                                {{!-- <option value="weeklyRecap">Weekly Recap</option> --}}
+                                {{!-- <option value="biWeeklyRecap">Bi-Weekly Recap</option> --}}
+                                {{!-- <option value="rangeOfDates">Range of Dates</option> --}}
+                                <option value="newEmployee">Create Employee</option>
+                                <option value="Logout">Logout</option>
+                                <input type="submit" value="Submit">
+                            </select>
+                        </form>
                     </div>
                 </div>
         </div>

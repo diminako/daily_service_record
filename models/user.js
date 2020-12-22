@@ -21,9 +21,15 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       allowNull: false
     }
+    // ,
+    // managerID: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: true
+    // }
   });
   User.associate = function(models) {
     User.hasMany(models.Order);
+    User.hasMany(models.User);
   };
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   User.prototype.validPassword = function(password) {

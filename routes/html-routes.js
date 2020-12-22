@@ -34,7 +34,7 @@ module.exports = function(app) {
         console.log(orderList);
         const myObj = {
           userInfo: req.user,
-          orders: JSON.stringify(orderList)
+          orders: orderList
         };
         res.render("employee", myObj);
       } else {

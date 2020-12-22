@@ -66,19 +66,47 @@ module.exports = function(app) {
     // DO NOT UPDATE THE PASSWORD OR ID
     res.sendStatus(200);
   });
+
+  //  read information for orders
+  app.get("/api/user_orders", (req, res) => {
+    if (req.user) {
+      const userId = req.user.id;
+      db.Order.findAll({
+        where: {
+          UserId: userId
+        }
+      }).then(results => res.json(results));
+    } else {
+      res.sendStatus(403);
+    }
+  });
+
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");
   });
+
   //Route for creating new employee
   app.post("/api/user_employee", (req, res) => {
     db.User.create({
+      UserId: req.user.id,
       email: req.body.email,
       password: req.body.password,
       clearance: false
     }).then(() => res.sendStatus(200));
   });
+
+  // // Route for getting all employee stats - Not working.
+  // app.get("/api/user_employee_stats", function(req, res) {
+  //   db.User.findAll({
+  //     where: {
+  //       managerID: req.params.id
+  //     }
+  //   }).then(function(data) {
+  //     res.json(data);
+  //   });
+  // });
 
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", (req, res) => {
