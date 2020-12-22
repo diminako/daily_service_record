@@ -11,7 +11,7 @@
                             <label for="category">Select Task:</label>
                             <select class="custom-select" id="taskList">
                                 <option value="refreshView">Refresh Table View</option>
-                                <option value="viewHours">View Overall Hours</option>
+                                {{!-- <option value="viewHours">View Overall Hours</option> --}}
                                 {{!-- <option value="weeklyRecap">Weekly Recap</option> --}}
                                 {{!-- <option value="biWeeklyRecap">Bi-Weekly Recap</option> --}}
                                 {{!-- <option value="rangeOfDates">Range of Dates</option> --}}
@@ -29,7 +29,7 @@
             <h3 class="has-text-weight-bold is-size-5">Productivity</h3>
             <div class="mgrProd">
                 <div class="mgrTaskBlk">
-                    <form action="prodDisplay">
+                    {{!-- <form action="prodDisplay">
                         <p>How would you like to display your data:</p>
                         <input type="radio" id="daily" name="display" value="daily">
                         <label for="daily">Daily</label><br>
@@ -39,8 +39,14 @@
                         <label for="monthly">Monthly</label>
                         <br>
                         <input type="submit" value="Submit">
-                    </form>
-                    <div class="prodGraph"></div>
+                    </form> --}}
+                    <div class="prodGraph">
+                        <div class="columns">
+                            <svg class="column is-12" id="lineGraph">
+
+                            </svg>
+                    </div>
+                    </div>
                 </div>
 
             </div>
@@ -106,17 +112,17 @@
 
 <div class="columns is-centered">
     {{!-- <div class="column is-1"></div> --}}
-    <div class="column is-10">
-        <table class="managerTable is-half" id="managerTable">
-            <caption>
+    <div class="column is-10 is-offset-4">
+        <table class="managerTable" id="managerTable">            
+            {{!-- <caption> --}}
                 <h2>Employee Data</h2>
-            </caption>
+            {{!-- </caption> --}}
             <thead>
                 <tr class="has-background-info has-text-white-ter ">
                     <th class=" has-text-white-ter">Employee Email</th>
-                    <th class=" has-text-white-ter">Start Date</th>
-                    <th class=" has-text-white-ter">Employee ID</th>
-                    <th class=" has-text-white-ter">Manager Associated ID</th>
+                    <th class=" has-text-white-ter ">Start Date</th>
+                    <th class=" has-text-white-ter ">Employee ID</th>
+                    <th class=" has-text-white-ter ">Manager Associated ID</th>
                 </tr>
             </thead>
             <tbody>
@@ -130,6 +136,7 @@
                 {{/each}}
             </tbody>
         </table>
+        
     </div>
     {{!-- <div class="column is-1"></div> --}}
 </div>
