@@ -29,13 +29,13 @@ module.exports = function(app) {
           include: [{ model: db.Order }]
         });
         const fixed = JSON.parse(JSON.stringify(employees));
-        console.log(fixed[0].Orders);
-
         const fixedWithCount = fixed.map(employee => {
           employee.total = 0;
-          employee.Orders.map(order => {
-            return (employee.total += order.hours);
-          });
+          if (employee.Orders) {
+            employee.Orders.map(order => {
+              return (employee.total += order.hours);
+            });
+          }
           return employee;
         });
         console.log(fixedWithCount);
@@ -43,7 +43,6 @@ module.exports = function(app) {
           userInfo: req.user,
           employees: fixed
         };
-        // console.log(employees[1].Orders);
         res.render("manager", myEmp);
       } else if (dataValues === void 0) {
         const orders = await user.getOrders();
