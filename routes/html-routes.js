@@ -45,10 +45,14 @@ module.exports = function(app) {
         };
         res.render("manager", myEmp);
       } else if (dataValues === void 0) {
-        const orders = await user.getOrders();
-        const orderList = orders.map(order => {
-          return order.dataValues;
-        });
+        const lengthCheck = await db.Order.findAll({});
+        let orderList = [];
+        if (lengthCheck) {
+          const orders = await user.getOrders();
+          orderList = orders.map(order => {
+            return order.dataValues;
+          });
+        }
         const myObj = {
           userInfo: req.user,
           orders: orderList
