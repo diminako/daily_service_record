@@ -6,8 +6,11 @@ const init = async () => {
   const currentDay = moment().format("MMMM D, YYYY");
   $("#date").text(currentDay);
 
-  const updatedOrders = myOrders.map(o => Object.assign(o, { createdAt: moment(new Date(o.createdAt)).format("L") })
-  );
+  const updatedOrders = myOrders.map(o => {
+    return Object.assign(o, {
+      createdAt: moment(new Date(o.createdAt)).format("L")
+    });
+  });
 
   if (dateFilter === "Daily") {
     updatedOrders.reduce(function(res, value) {
@@ -330,8 +333,8 @@ const init = async () => {
         .transition()
         .duration(1000)
         .call(d3.axisLeft(y));
-      
-        d3.select("#lineGraph")
+
+      d3.select("#lineGraph")
         .selectAll(".circle")
         .data(orderArray)
         .join(
