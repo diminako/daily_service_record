@@ -1,7 +1,6 @@
 const init = async () => {
   const myOrders = await $.get("/api/user_orders");
   console.log(myOrders);
-
   let orderArray = [];
   let dateFilter = $("#dateTaskList").val();
   const currentDay = moment().format("MMMM D, YYYY");
@@ -46,46 +45,6 @@ const init = async () => {
   ]);
   const g = d3.select("#lineGraph").append("g");
 
-  $.get("/api/user_data").then(data => {
-    $(".member-name").text(data.email);
-    $(".member-name").text(data.password);
-  });
-  // shows the modal if the user selects new or logs out
-  $("#employeeForm").on("submit", function(event) {
-    const taskList = $("#taskList").val();
-    console.log(taskList);
-    event.preventDefault();
-    if (taskList === "New") {
-      $("#newOrder").addClass("is-active");
-    } else if (taskList === "Logout") {
-      window.location.replace("/logout");
-    }
-  });
-  // blank click handler
-  $("prodDisplay").on("submit", () => {
-    console.log("select");
-  });
-  // creates the variable of the information that is in the modal
-  $(".newJob").on("submit", function(event) {
-    event.preventDefault();
-    const repairOrderData = {
-      repairOrderNumber: $("#repairOrderNumber").val(),
-      vin: $("#vin").val(),
-      yearMakeModel: $("#yearMakeModel").val(),
-      name: $("#name").val(),
-      description: $("#description").val(),
-      hours: $("#hours").val()
-    };
-    createRepairOrders(repairOrderData);
-  });
-  // posts the new info to the api
-  function createRepairOrders(repairOrderData) {
-    $.post("/api/order", repairOrderData).then(res => {
-      if (res === "OK") {
-        location.reload();
-      }
-    });
-  }
   // Edit Order JavaScript
   $(".editJob").on("submit", function(event) {
     event.preventDefault();
@@ -521,3 +480,44 @@ const init = async () => {
   }
 };
 init();
+
+$.get("/api/user_data").then(data => {
+  $(".member-name").text(data.email);
+  $(".member-name").text(data.password);
+});
+// shows the modal if the user selects new or logs out
+$("#employeeForm").on("submit", function(event) {
+  const taskList = $("#taskList").val();
+  console.log(taskList);
+  event.preventDefault();
+  if (taskList === "New") {
+    $("#newOrder").addClass("is-active");
+  } else if (taskList === "Logout") {
+    window.location.replace("/logout");
+  }
+});
+// blank click handler
+$("prodDisplay").on("submit", () => {
+  console.log("select");
+});
+// creates the variable of the information that is in the modal
+$(".newJob").on("submit", function(event) {
+  event.preventDefault();
+  const repairOrderData = {
+    repairOrderNumber: $("#repairOrderNumber").val(),
+    vin: $("#vin").val(),
+    yearMakeModel: $("#yearMakeModel").val(),
+    name: $("#name").val(),
+    description: $("#description").val(),
+    hours: $("#hours").val()
+  };
+  createRepairOrders(repairOrderData);
+});
+// posts the new info to the api
+function createRepairOrders(repairOrderData) {
+  $.post("/api/order", repairOrderData).then(res => {
+    if (res === "OK") {
+      location.reload();
+    }
+  });
+}

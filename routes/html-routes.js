@@ -24,14 +24,32 @@ module.exports = function(app) {
     db.User.findByPk(req.user.id).then(async user => {
       let dataValues;
       if (req.user.clearance) {
-        res.render("manager", { email: req.user.email });
+        const employees = await db.User.findAll({
+          where: { UserId: req.user.id },
+          include: [{ model: db.Order }]
+        });
+        const fixed = JSON.parse(JSON.stringify(employees));
+        console.log(fixed[0].Orders);
+
+        const fixedWithCount = fixed.map(employee => {
+          employee.total = 0;
+          employee.Orders.map(order => {
+            return (employee.total += order.hours);
+          });
+          return employee;
+        });
+        console.log(fixedWithCount);
+        const myEmp = {
+          userInfo: req.user,
+          employees: fixed
+        };
+        // console.log(employees[1].Orders);
+        res.render("manager", myEmp);
       } else if (dataValues === void 0) {
-        console.log(dataValues + "<---------");
         const orders = await user.getOrders();
         const orderList = orders.map(order => {
           return order.dataValues;
         });
-        console.log(orderList);
         const myObj = {
           userInfo: req.user,
           orders: orderList

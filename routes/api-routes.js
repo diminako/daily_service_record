@@ -97,6 +97,14 @@ module.exports = function(app) {
     }).then(() => res.sendStatus(200));
   });
 
+  app.get("/api/user_employees", (req, res) => {
+    db.User.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    }).then(() => res.sendStatus(200));
+  });
+
   // // Route for getting all employee stats - Not working.
   // app.get("/api/user_employee_stats", function(req, res) {
   //   db.User.findAll({
@@ -129,6 +137,33 @@ module.exports = function(app) {
       res.render("manager");
     } else {
       res.render("employee");
+    }
+  });
+  app.get("/api/myEmployees", async (req, res) => {
+    if (req.user.clearance) {
+      const employees = await db.User.findAll({
+        where: { UserId: req.user.id },
+        include: [{ model: db.Order }]
+      });
+      const fixed = JSON.parse(JSON.stringify(employees));
+      console.log(fixed[0].Orders);
+
+      const fixedWithCount = fixed.map(employee => {
+        employee.total = 0;
+        employee.Orders.map(order => {
+          return (employee.total += order.hours);
+        });
+        return employee;
+      });
+      console.log(fixedWithCount);
+      const myEmp = {
+        userInfo: req.user,
+        employees: fixed
+      };
+      // console.log(employees[1].Orders);
+      res.json(myEmp);
+    } else {
+      res.sendStatus(403);
     }
   });
 };

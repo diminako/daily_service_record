@@ -1,6 +1,7 @@
 <main class="section">
     <div class="container columns">
-        <div class="column is-6 tasks">
+        <div class="column is-one-third is-offset-1 tasks card column has-background-info has-text-white-ter ">
+            <h1 class="greeting has-text-weight-bold is-size-3">Welcome <span class="member-name">{{email}}</span></h1>
             <h3>Tasks</h3>
             {{!-- manager tasks can go here and be hidden when not needed --}}
             <div class="mgrTasks">
@@ -9,7 +10,7 @@
                         <form id="managerForm">
                             <label for="category">Select Task:</label>
                             <select class="custom-select" id="taskList">
-                                <option value="viewStats">View Employee Stats</option>
+                                <option value="refreshView">Refresh Table View</option>
                                 <option value="viewHours">View Overall Hours</option>
                                 {{!-- <option value="weeklyRecap">Weekly Recap</option> --}}
                                 {{!-- <option value="biWeeklyRecap">Bi-Weekly Recap</option> --}}
@@ -21,6 +22,7 @@
                         </form>
                     </div>
                 </div>
+            </div>
         </div>
         <div class="column is-6 is-offset-1 productivity card has-background-info has-text-white-ter">
             <h1 class="greeting has-text-weight-bold is-size-3" id="date"></h1>
@@ -44,13 +46,14 @@
             </div>
         </div>
     </div>
-    <div class="container columns">
+    </div>
+    {{!-- <div class="container columns">
         <div class="column is-11 today is-offset-1">
             <h3 class="has-text-weight-bold is-size-5 ">Job Data</h3>
-                        <table id="orderTable">
-                <thead >
+            <table id="orderTable">
+                <thead>
                     <tr class="has-background-info ">
-                        <th></th>                        
+                        <th></th>
                         <th class="has-text-white-ter">Repair Order Number</th>
                         <th class="has-text-white-ter">VIN #</th>
                         <th class="has-text-white-ter">Year,Make,Model</th>
@@ -61,7 +64,7 @@
                         <th class="has-text-white-ter">Created Date</th>
                         <th class="has-text-white-ter">Modified Date</th>
                         <th class="has-text-white-ter">Edit</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
@@ -69,7 +72,7 @@
             </table>
 
         </div>
-    </div>
+    </div> --}}
 </main>
 {{!-- New User Modal --}}
 <div class="modal">
@@ -101,4 +104,35 @@
     </div>
 </div>
 
+<div class="columns is-centered">
+    {{!-- <div class="column is-1"></div> --}}
+    <div class="column is-10">
+        <table class="managerTable is-half" id="managerTable">
+            <caption>
+                <h2>Employee Data</h2>
+            </caption>
+            <thead>
+                <tr class="has-background-info has-text-white-ter ">
+                    <th class=" has-text-white-ter">Employee Email</th>
+                    <th class=" has-text-white-ter">Start Date</th>
+                    <th class=" has-text-white-ter">Employee ID</th>
+                    <th class=" has-text-white-ter">Manager Associated ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each employees}}
+                <tr>
+                    <td>{{email}}</td>
+                    <td>{{createdAt}}</td>
+                    <td>{{id}}</td>
+                    <td>{{UserId}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{!-- <div class="column is-1"></div> --}}
+</div>
+
+<script src="https://d3js.org/d3.v6.min.js"></script>
 <script src="/js/managerAction.js"></script>
