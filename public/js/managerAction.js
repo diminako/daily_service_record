@@ -130,8 +130,7 @@ const test = async () => {
     })
     .curve(d3.curveMonotoneX);
 
-  const line = d3
-    .select("#lineGraph")
+  d3.select("#lineGraph")
     .append("path")
     .data([myUsers.employees])
     .attr("class", "line")
