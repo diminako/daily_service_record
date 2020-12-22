@@ -24,17 +24,18 @@
             <div class="empTaskBlk">
                 <form id="dateFilter" action="prodDisplay">
                     <label for="category">Select Time Period:</label>
-                    <select class="custom-select" id="taskList">
-                        <option value="New">Daily</option>
-                        <option value="Search">Bi-Weekly</option>
-                        <option value="Edit">Monthly</option>
-                        <input type="submit" value="Submit">
+                    <select class="custom-select" id="dateTaskList">
+                        <option value="Daily">Daily</option>
+                        <option value="Bi-Weekly">Bi-Weekly</option>
+                        <option value="Monthly">Monthly</option>
                     </select>
                 </form>
                 <div id="prodGraph">
-                    <svg id="lineGraph">
+                    <div class="columns">
+                            <svg class="column is-12" id="lineGraph">
 
-                    </svg>
+                            </svg>
+                    </div>
                 </div>
             </div>
             <div class="empProd">
@@ -43,9 +44,9 @@
     </div>
     <div class="container columns">
         <div class="column is-11 today is-offset-1">
-            <h3 class="has-text-weight-bold is-size-5 " >Job Data</h3>
+            <h3 class="has-text-weight-bold is-size-5 ">Job Data</h3>
             <table id="orderTable">
-                <thead >
+                <thead>
                     <tr class="has-background-info ">
                         <th></th>
                         <th class="has-text-white-ter">Repair Order Number</th>
@@ -57,7 +58,7 @@
                         <th class="has-text-white-ter">Created Date</th>
                         <th class="has-text-white-ter">Modified Date</th>
                         <th class="has-text-white-ter">Edit</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
@@ -129,10 +130,17 @@
         <button class="delete is-pulled-right" id="close" aria-label="close"></button>
         <form action="" class="editJob">
             <p>Edit Job</p>
-             <div class="field">
+            <div class="field">
                 <label class="label">ID#</label>
                 <div class="control">
                     <input class="input" id="idEdit" name="idEdit" type="text" placeholder="Text input" readonly>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Repair Order ID</label>
+                <div class="control">
+                    <input class="input" id="idEdit" name="repairOrderNumber" type="text" placeholder="Text input"
+                        readonly>
                 </div>
             </div>
             <div class="field">
@@ -181,6 +189,5 @@
         </form>
     </div>
 </div>
-
 <script src="https://d3js.org/d3.v6.min.js"></script>
-<script src="/js/employeeAction.js" ></script>
+<script src="/js/employeeAction.js"></script>
