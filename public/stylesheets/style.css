@@ -37,9 +37,18 @@ input {
   
   color:rgb(204,194,192);
 };
+
 .displayBox {
   background-color:rgb(120,205,209);
+  display: flex;
+  flex-direction: column;
 };
+
+.sectionBox {
+  display: flex;
+  justify-content: center;
+}
+
 /* TABLE CSS */
 
 table {
